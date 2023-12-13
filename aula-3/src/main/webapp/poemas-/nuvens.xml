@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<poema>
+	<autor>Álvaro de Campos</autor>
+	<título>Nuvems</título>
+	<estrofe>
+		<verso>No dia triste o meu coração mais triste que o dia...</verso>
+		<verso>Obrigações morais e civis?</verso>
+		<verso>Complexidade de deveres, de consequências?</verso>
+		<verso>Não, nada...</verso>
+		<verso>O dia triste, a pouca vontade para tudo...</verso>
+		<verso>Nada...</verso>
+	</estrofe>
+	<estrofe>
+		<verso>Outros viajam (também viajei), outros estão ao sol</verso>
+		<verso>(Também estive ao sol, ou supus que estive),</verso>
+		<verso>Todos têm razão, ou vida, ou ignorância simétrica,</verso>
+		<verso>Vaidade, alegria e sociabilidade,</verso>
+		<verso>E emigram para voltar, ou para não voltar,</verso>
+		<verso>Em navios que os transportam simplesmente.</verso>
+		<verso>Não sentem o que há de morte em toda a partida,</verso>
+		<verso>De mistério em toda a chegada,</verso>
+		<verso>De horrível em todo o novo...</verso>
+		<verso>Não sentem: por isso são deputados e financeiros,</verso>
+		<verso>Dançam e são empregados no comércio,</verso>
+		<verso>Vão a todos os teatros e conhecem gente...</verso>
+		<verso>Não sentem: para que haveriam de sentir?</verso>
+	</estrofe>
+	<estrofe>
+		<verso>Gado vestido dos currais dos Deuses,</verso>
+		<verso>Deixá-lo passar engrinaldado para o sacrifício</verso>
+		<verso>Sob o sol, alacre, vivo, contente de sentir-se...</verso>
+		<verso>Deixai-o passar, mas ai, vou com ele sem grinalda</verso>
+		<verso>Para o mesmo destino!</verso>
+		<verso>Vou com ele sem o sol que sinto, sem a vida que tenho,</verso>
+		<verso>Vou com ele sem desconhecer...</verso>
+	</estrofe>
+	<estrofe>
+		<verso>No dia triste o meu coração mais triste que o dia...</verso>
+		<verso>No dia triste todos os dias...</verso>
+		<verso>No dia tão triste...</verso>
+	</estrofe>
+</poema>

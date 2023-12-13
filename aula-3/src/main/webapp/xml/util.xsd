@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- Prof P. Filipe -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:simpleType name="T_Nome">
+		<xs:annotation>
+			<xs:documentation>Regras dos nomes</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[A-Z|ÁÀÃÂÉÈÍÌÒÓÕÔÙÚ][a-z|áàãâéèêíìóòõôúùç'-]{1,30}((\s(d'|((da|de|do|dos|du)\s))?)[A-Z|ÁÀÃÂÉÈÍÌÒÓÕÔÙÚ][a-z|áàãâéèêíìóòõôúùç'-]{1,30})*"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="T_Mime">
+		<xs:annotation>
+			<xs:documentation>Tipo mime de imagens</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="image/jpg"/>
+			<xs:enumeration value="image/jpeg"/>
+			<xs:enumeration value="image/png"/>
+			<xs:enumeration value="image/gif"/>
+			<xs:enumeration value="image/bmp"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="T_Descritor">
+		<xs:annotation>
+			<xs:documentation>Descritor da foto ou do poema</xs:documentation>
+		</xs:annotation>
+		<xs:simpleContent>
+			<xs:extension base="xs:string">
+				<xs:attribute name="autor" type="T_Nome" use="required"/>
+				<xs:attribute name="ficheiro" type="xs:anyURI" use="required"/>
+				<xs:attribute name="título" type="xs:string" use="required"/>
+				<xs:attribute name="tipo" type="T_Tipo" use="required"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:simpleType name="T_Tipo">
+		<xs:annotation>
+			<xs:documentation>Enumera o tipo de documento</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="foto"/>
+			<xs:enumeration value="poema"/>
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>

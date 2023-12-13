@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml-stylesheet type="text/xsl" href="poema_xml_to_html.xsl" ?>
+<poema>
+	<autor>Fernando Pessoa</autor>
+	<título>O Mostrengo</título>
+	<estrofe>
+		<verso><sílaba>O</sílaba> <sílaba>mos</sílaba><sílaba>tren</sílaba><sílaba>go</sílaba> <sílaba>que</sílaba> <sílaba>es</sílaba><sílaba>tá</sílaba> <sílaba>no</sílaba> <sílaba>fim</sílaba> <sílaba>do</sílaba> <sílaba>mar</sílaba> </verso>
+		<verso><sílaba>Na</sílaba> <sílaba>noi</sílaba><sílaba>te</sílaba> <sílaba>de</sílaba> <sílaba>breu</sílaba> <sílaba>er</sílaba><sílaba>gueu</sílaba>-<sílaba>se</sílaba> <sílaba>a</sílaba> <sílaba>vo</sílaba><sílaba>ar</sílaba>;</verso>
+		<verso><sílaba>À</sílaba> <sílaba>roda</sílaba> <sílaba>da</sílaba> <sílaba>nau</sílaba> <sílaba>vo</sílaba><sílaba>ou</sílaba> <sílaba>três</sílaba> <sílaba>ve</sílaba><sílaba>zes</sílaba>,</verso>
+		<verso><sílaba>Vo</sílaba><sílaba>ou</sílaba> <sílaba>três</sílaba> <sílaba>ve</sílaba><sílaba>zes</sílaba> <sílaba>a</sílaba> <sílaba>chi</sílaba><sílaba>ar</sílaba>,</verso>
+		<verso><sílaba>E</sílaba> <sílaba>dis</sílaba><sílaba>se</sílaba> : " <sílaba>Quem</sílaba> <sílaba>é</sílaba> <sílaba>que</sílaba> <sílaba>ou</sílaba><sílaba>sou</sílaba> <sílaba>en</sílaba><sílaba>trar</sílaba></verso>
+		<verso><sílaba>Nas</sílaba> <sílaba>mi</sílaba><sílaba>nhas</sílaba> <sílaba>ca</sílaba><sílaba>ver</sílaba><sílaba>nas</sílaba> <sílaba>que</sílaba> <sílaba>não</sílaba> <sílaba>des</sílaba><sílaba>ven</sílaba><sílaba>do</sílaba>,</verso>
+		<verso><sílaba>Meus</sílaba> <sílaba>tec</sílaba><sílaba>tos</sílaba> <sílaba>ne</sílaba><sílaba>gros</sílaba> <sílaba>do</sílaba> <sílaba>fim</sílaba> <sílaba>do</sílaba> <sílaba>mun</sílaba><sílaba>do</sílaba>?"</verso>
+		<verso><sílaba>E</sílaba> <sílaba>o</sílaba> <sílaba>ho</sílaba><sílaba>mem</sílaba> <sílaba>do</sílaba> <sílaba>le</sílaba><sílaba>me</sílaba> <sílaba>dis</sílaba><sílaba>se</sílaba>, <sílaba>tre</sílaba><sílaba>men</sílaba><sílaba>do</sílaba>:</verso>
+		<verso>"<sílaba>El</sílaba>-<sílaba>Rei</sílaba> <sílaba>D</sílaba>. <sílaba>Jo</sílaba><sílaba>ão</sílaba> <sílaba>Se</sílaba><sílaba>gun</sílaba><sílaba>do</sílaba>!"</verso>
+	</estrofe>
+	<estrofe>
+		<verso>"<sílaba>De</sílaba> <sílaba>quem</sílaba> <sílaba>são</sílaba> <sílaba>as</sílaba> <sílaba>ve</sílaba><sílaba>las</sílaba> <sílaba>on</sílaba><sílaba>de</sílaba> <sílaba>me</sílaba> <sílaba>ro</sílaba><sílaba>ço</sílaba>?</verso>
+		<verso><sílaba>De</sílaba> <sílaba>quem</sílaba> <sílaba>as</sílaba> <sílaba>qui</sílaba><sílaba>lhas</sílaba> <sílaba>que</sílaba> <sílaba>ve</sílaba><sílaba>jo</sílaba> <sílaba>e</sílaba> <sílaba>ou</sílaba><sílaba>ço</sílaba>?"</verso>
+		<verso><sílaba>Dis</sílaba><sílaba>se</sílaba> <sílaba>o</sílaba> <sílaba>mos</sílaba><sílaba>tren</sílaba><sílaba>go</sílaba>, <sílaba>e</sílaba> <sílaba>ro</sílaba><sílaba>dou</sílaba> <sílaba>três</sílaba> <sílaba>ve</sílaba><sílaba>zes</sílaba>,</verso>
+		<verso><sílaba>Três</sílaba> <sílaba>ve</sílaba><sílaba>zes</sílaba> <sílaba>ro</sílaba><sílaba>dou</sílaba> <sílaba>i</sílaba><sílaba>mun</sílaba><sílaba>do</sílaba> <sílaba>e</sílaba> <sílaba>gros</sílaba><sílaba>so</sílaba>,</verso>
+	</estrofe>
+	<estrofe>
+		<verso>"<sílaba>Quem</sílaba> <sílaba>vem</sílaba> <sílaba>po</sílaba><sílaba>der</sílaba> <sílaba>o</sílaba> <sílaba>que</sílaba> <sílaba>só</sílaba> <sílaba>eu</sílaba> <sílaba>pos</sílaba><sílaba>so</sílaba>,</verso>
+		<verso><sílaba>Que</sílaba> <sílaba>mo</sílaba><sílaba>ro</sílaba> <sílaba>on</sílaba><sílaba>de</sílaba> <sílaba>nun</sílaba><sílaba>ca</sílaba> <sílaba>nin</sílaba><sílaba>guém</sílaba> <sílaba>me</sílaba> <sílaba>vis</sílaba><sílaba>se</sílaba></verso>
+		<verso><sílaba>E</sílaba> <sílaba>es</sílaba><sílaba>cor</sílaba><sílaba>ro</sílaba> <sílaba>os</sílaba> <sílaba>me</sílaba><sílaba>dos</sílaba> <sílaba>do</sílaba> <sílaba>mar</sílaba> <sílaba>sem</sílaba> <sílaba>fun</sílaba><sílaba>do</sílaba>?"</verso>
+		<verso><sílaba>E</sílaba> <sílaba>o</sílaba> <sílaba>ho</sílaba><sílaba>mem</sílaba> <sílaba>do</sílaba> <sílaba>le</sílaba><sílaba>me</sílaba> <sílaba>tre</sílaba><sílaba>meu</sílaba>, <sílaba>e</sílaba> <sílaba>dis</sílaba><sílaba>se</sílaba>:</verso>
+		<verso>"<sílaba>El</sílaba>-<sílaba>Rei</sílaba> <sílaba>D</sílaba>. <sílaba>Jo</sílaba><sílaba>ão</sílaba> <sílaba>Se</sílaba><sílaba>gun</sílaba><sílaba>do</sílaba>!"</verso>
+	</estrofe>
+	<estrofe>
+		<verso><sílaba>Três</sílaba> <sílaba>ve</sílaba><sílaba>zes</sílaba> <sílaba>do</sílaba> <sílaba>le</sílaba><sílaba>me</sílaba> <sílaba>as</sílaba> <sílaba>mãos</sílaba> <sílaba>er</sílaba><sílaba>gueu</sílaba>,</verso>
+		<verso><sílaba>Três</sílaba> <sílaba>ve</sílaba><sílaba>zes</sílaba> <sílaba>ao</sílaba> <sílaba>le</sílaba><sílaba>me</sílaba> <sílaba>as</sílaba> <sílaba>res</sílaba><sílaba>pon</sílaba><sílaba>deu</sílaba>,</verso>
+		<verso><sílaba>E</sílaba> <sílaba>dis</sílaba><sílaba>se</sílaba> <sílaba>no</sílaba> <sílaba>fim</sílaba> <sílaba>de</sílaba> <sílaba>tre</sílaba><sílaba>mer</sílaba> <sílaba>três</sílaba> <sílaba>ve</sílaba><sílaba>zes</sílaba>:</verso>
+		<verso>"<sílaba>A</sílaba><sílaba>qui</sílaba> <sílaba>ao</sílaba> <sílaba>le</sílaba><sílaba>me</sílaba> <sílaba>sou</sílaba> <sílaba>mais</sílaba> <sílaba>do</sílaba> <sílaba>que</sílaba> <sílaba>eu</sílaba>:</verso>
+		<verso><sílaba>Sou</sílaba> <sílaba>um</sílaba> <sílaba>Po</sílaba><sílaba>vo</sílaba> <sílaba>que</sílaba> <sílaba>quer</sílaba> <sílaba>o</sílaba> <sílaba>mar</sílaba> <sílaba>que</sílaba> <sílaba>é</sílaba> <sílaba>teu</sílaba>;</verso>
+		<verso><sílaba>E</sílaba> <sílaba>mais</sílaba> <sílaba>que</sílaba> <sílaba>o</sílaba> <sílaba>mos</sílaba><sílaba>tren</sílaba><sílaba>go</sílaba>, <sílaba>que</sílaba> <sílaba>me</sílaba> <sílaba>a</sílaba> <sílaba>al</sílaba><sílaba>ma</sílaba> <sílaba>te</sílaba><sílaba>me</sílaba></verso>
+		<verso><sílaba>E</sílaba> <sílaba>ro</sílaba><sílaba>da</sílaba> <sílaba>nas</sílaba> <sílaba>tre</sílaba><sílaba>vas</sílaba> <sílaba>do</sílaba> <sílaba>fim</sílaba> <sílaba>do</sílaba> <sílaba>mun</sílaba><sílaba>do</sílaba>;</verso>
+		<verso><sílaba>Man</sílaba><sílaba>da</sílaba> <sílaba>a</sílaba> <sílaba>von</sílaba><sílaba>ta</sílaba><sílaba>de</sílaba>, <sílaba>que</sílaba> <sílaba>me</sílaba> <sílaba>a</sílaba><sílaba>ta</sílaba> <sílaba>ao</sílaba> <sílaba>le</sílaba><sílaba>me</sílaba>,</verso>
+		<verso><sílaba>De</sílaba> <sílaba>El</sílaba>-<sílaba>Rei</sílaba> <sílaba>D</sílaba>. <sílaba>Jo</sílaba><sílaba>ão</sílaba> <sílaba>Se</sílaba><sílaba>gun</sílaba><sílaba>do</sílaba>!"</verso>
+	</estrofe>
+</poema>
+

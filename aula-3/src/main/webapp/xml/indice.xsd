@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Prof. P. Filipe -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:include schemaLocation="util.xsd"/>
+	<xs:element name="indice">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="descritor" type="T_Descritor" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

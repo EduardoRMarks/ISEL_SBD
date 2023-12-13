@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- Eng. P. Filipe !-->
+<poema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<autor>Benjamin Franklin</autor>
+	<título>Quote</título>
+	<estrofe>
+		<verso>Tell me and I forget</verso>
+		<verso>Teach me and I remember </verso>
+		<verso>Involve me and I learn</verso>
+	</estrofe>
+</poema>

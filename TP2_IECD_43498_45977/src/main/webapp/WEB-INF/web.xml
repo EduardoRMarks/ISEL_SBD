@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="https://jakarta.ee/xml/ns/jakartaee" xmlns:web="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_5_0.xsd" version="5.0">
+  <servlet>
+    <description></description>
+    <display-name>StartMenuServlet</display-name>
+    <servlet-name>StartMenuServlet</servlet-name>
+    <servlet-class>StartMenuServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>StartMenuServlet</servlet-name>
+    <url-pattern>/StartMenuServlet</url-pattern>
+  </servlet-mapping>
+  <display-name>TP2_v1</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+  <servlet>
+    <servlet-name>FourInARowServlet</servlet-name>
+    <servlet-class>FourInARowServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>FourInARowServlet</servlet-name>
+    <url-pattern>/FourInARowServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>LobbyServlet</display-name>
+    <servlet-name>LobbyServlet</servlet-name>
+    <servlet-class>LobbyServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LobbyServlet</servlet-name>
+    <url-pattern>/LobbyServlet</url-pattern>
+  </servlet-mapping>
+</web-app>

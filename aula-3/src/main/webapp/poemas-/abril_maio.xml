@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- Eng. P. Filipe !-->
+<poema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<autor>Desconhecido</autor>
+	<título>Abril e Maio</título>
+	<estrofe>
+		<verso><sílaba>Se</sílaba><sílaba>gun</sílaba><sílaba>do</sílaba> <sílaba>re</sílaba><sílaba>za a</sílaba> <sílaba>len</sílaba><sílaba>da</sílaba>:</verso>
+		<verso><sílaba>Em</sílaba> <sílaba>a</sílaba><sílaba>bril</sílaba> <sílaba>es</sílaba><sílaba>pla</sílaba><sílaba>na</sílaba><sílaba>das</sílaba> <sílaba>mil</sílaba>;</verso>
+		<verso><sílaba>Em</sílaba> <sílaba>ma</sílaba><sílaba>io</sílaba> <sílaba>nem</sílaba> <sílaba>de</sílaba> <sílaba>ca</sílaba><sílaba>sa</sílaba> <sílaba>sa</sílaba><sílaba>i</sílaba><sílaba>o</sílaba>.</verso>
+	</estrofe>
+</poema>
+
+
+
+

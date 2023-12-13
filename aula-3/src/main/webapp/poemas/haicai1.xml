@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- Eng. P. Filipe !-->
+<poema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<autor>Goga Masuda</autor>
+	<título>Sem título</título>
+	<estrofe>
+		<verso><sílaba>Li</sílaba><sílaba>bé</sílaba><sílaba>lu</sílaba><sílaba>la</sílaba> <sílaba>vo</sílaba><sílaba>an</sílaba>do</verso>
+		<verso><sílaba>pá</sílaba><sílaba>ra um</sílaba> <sílaba>ins</sílaba><sílaba>tan</sílaba><sílaba>te e</sílaba> <sílaba>lan</sílaba>ça</verso>
+		<verso><sílaba>su</sílaba><sílaba>a</sílaba> <sílaba>som</sílaba><sílaba>bra</sílaba> <sílaba>no</sílaba> <sílaba>chão</sílaba></verso>
+	</estrofe>
+</poema>
+
+
+
+

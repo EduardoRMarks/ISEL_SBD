@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<?xml-stylesheet type="text/xsl" href="../xml/poema_xml_to_html.xsl"?>
+<poema>
+	<autor>Adiafa</autor>
+	<título>Oh Ana</título>
+	<estrofe>
+		<verso>Oh Ana, Oh Ana, Oh Ana</verso>
+		<verso>Dá um jeitinho à cintura</verso>
+		<verso>Lá na tua terra Oh Ana</verso>
+		<verso>Nem a tua mãe te atura</verso>
+	</estrofe>
+	<estrofe>	
+		<verso>Nem a tua mãe te atura</verso>
+		<verso>Nem o São Bartolomeu</verso>
+		<verso>Oh Ana, Oh Ana, Oh Ana</verso>
+		<verso>Tu és minha e eu sou teu</verso> 
+	</estrofe>
+	<estrofe>
+		<verso>Tu és minha e eu sou teu</verso> 
+		<verso>Eu sou teu e tu és minha</verso>
+		<verso>Oh Ana, Oh Ana, Oh Ana</verso>
+		<verso>Da lá mais uma voltinha</verso>
+	</estrofe>
+	<estrofe>
+		<verso>Semeei no meu quintal</verso>
+		<verso>Uns dentinhos de alho</verso>
+		<verso>Saltou-me o cabo do sacho</verso>
+		<verso>E bateu-me no ...</verso>
+	</estrofe>
+	<estrofe>
+		<verso>Eu passei à tua rua</verso> 
+		<verso>E bati às portas todas</verso>
+		<verso>Saíu-me o teu pai e disse</verso>
+		<verso>Talvez um dia te ...</verso>
+	</estrofe>
+	<estrofe>
+		<verso>Fiquei muito satisfeito</verso>
+		<verso>Apenas só de te ver</verso>
+		<verso>Mas mais contente eu ficava</verso> 
+		<verso>Se te podesse ...</verso>
+	</estrofe>
+</poema>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<?xml-stylesheet type="text/xsl" href="../xml/poema_xml_to_html.xsl"?>
+<poema>
+	<autor>Manuel Alentejano</autor>
+	<título>Amizade e Partilha</título>
+	<estrofe>
+		<verso>Se a vida é uma viagem</verso>
+		<verso>E a sociedade uma ilha</verso>
+		<verso>Levo comigo a imagem</verso>
+		<verso>Da amizade e partilha</verso>
+	</estrofe>
+	<!-- Festódromo, 14 setembro 2019 -->
+</poema>
+
