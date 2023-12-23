@@ -2,10 +2,14 @@ package util;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 public class DBConnectionManager {
-    private static final String JDBC_URL = "jdbc:mysql://localhost/sbd_tp1_43498_45977_47739";
+    private static final String JDBC_URL = "jdbc:mysql://localhost:3306/sbd_tp1_43498_45977_47739";
     private static final String USERNAME = "root";
     private static final String PASSWORD = "toor";
 
@@ -27,4 +31,24 @@ public class DBConnectionManager {
             }
         }
     }
+    
+    public static ResultSet getQueryResult(String QUERY, Connection connection) throws SQLException {
+    	List<String> emailList = new ArrayList<>();
+    	try {
+    		Statement stmt = connection.createStatement();
+        	ResultSet rs = stmt.executeQuery(QUERY);
+
+    		while (rs.next()) {
+    			String email = rs.getString("Email");
+                emailList.add(email);	
+			}
+    		
+    		for (String email : emailList) {
+                System.out.println("Email: " + email);
+            }
+        	return rs;
+		} catch (SQLException e) {
+			throw new SQLException(e);
+		}
+	}
 }

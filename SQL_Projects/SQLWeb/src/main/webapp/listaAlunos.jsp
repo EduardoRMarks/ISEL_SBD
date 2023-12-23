@@ -32,7 +32,7 @@ tr:nth-child(even) {
 <%
 String DB_URL = "jdbc:mysql://localhost:3306/aula1";
 String USER = "root";
-String PASS = "password";
+String PASS = "toor";
 String QUERY = "SELECT numero,"
 		+ "    nome,"
 		+ "    genero,"
