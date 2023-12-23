@@ -37,7 +37,7 @@ public class Configura {
 
 	private String database = "aula";
 	private String usr = "root";
-	private String pwd = "password";
+	private String pwd = "toor";
 	private String serverName = "localhost";  //"pfhp7";
 	
 	private String drv = "com.mysql.cj.jdbc.Driver";
