@@ -1,3 +1,4 @@
+<%@page import="java.io.Console"%>
 <%@page import="util.DBConnectionManager"%>
 <%@page import="util.PasswordUtil" %>
 <%@page import="java.sql.SQLException"%>
@@ -45,6 +46,7 @@
 
                 if (passwordMatch) {
                     session.setAttribute("userRole", userRole);
+                    request.getSession().setAttribute("userEmail", username);
                     response.sendRedirect(userRole.toLowerCase() + ".jsp");
                     return; 
                 } else {
