@@ -50,8 +50,10 @@
         userSelfPhone = resultSet.getString("Telemovel");
         
         user = new User(resultSet.getInt("NIF"), userEmail, UserRole.CLIENT);
+        session.setAttribute("user", user);
         String client = "client" + userNIF;
-        session.setAttribute(client, client);
+        session.setAttribute("client", client);
+        
         
 	} catch (Exception e) {
         e.printStackTrace();
@@ -59,41 +61,52 @@
         DBConnectionManager.close(resultSet, statement, connection);
     }
 	
+	if ("POST".equalsIgnoreCase(request.getMethod())) {
+		try{
+			connection = DBConnectionManager.getConnection();
+			
+			String formId = request.getParameter("updatePerfil");
+			System.out.println(formId);
+			
+			String username = request.getParameter("username");
+	        String enteredPassword = request.getParameter("password");
+		} catch (Exception e) {
+	        e.printStackTrace();
+	    } finally {
+	        DBConnectionManager.close(resultSet, statement, connection);
+	    }
+	}
 %>
 
 <div>
 	<h1><%= user.toString() %></h1>
+	<h3>Bem vindo <%= userName %></h3>
 	<button onclick="showForm('updatePerfil')">Atualizar o perfil</button>
     <button onclick="showForm('form2')">Show Form 2</button>
     <button onclick="showForm('form3')">Show Form 3</button>
     <button onclick="showForm('')">Hide</button>
-
-    <form id="updatePerfil" method="post" class="form-container">
-        <label for="NIF">NIF:</label>
-    	<input type="number" name="NIF" value="<%= userNIF %>" required/><br/>
-    	
-		<label for="nome">Nome:</label>
-    	<input type="text" name="nome" value="<%= userName %>" required/><br/>
-    	
-    	<label for="DataDeNascimento">Data de Nascimento:</label>
-    	<input type="date" name="DataDeNascimento" value="<%= userBirthDate %>" required/><br/>
-    	
-    	<label for="Telemovel">Telemovel:</label>
-    	<input type="text" name="Telemovel" value="<%= userSelfPhone %>" required/><br/>
-    	
-    	<label for="Email">Email:</label>
-    	<input type="text" name="Email" value="<%= userEmail %>" required/><br/>
-    	
-        <input type="submit" value="update"/>
+    
+    <form action="update_cliente_info.jsp" method="get">
+        <input type="submit" value="Update Info">
+    </form>
+    
+    <form action="update_patologias.jsp" method="get">
+        <input type="submit" value="Update Info">
+    </form>
+    
+    <form action="update_objeyivos.jsp" method="get">
+        <input type="submit" value="Update Info">
     </form>
 
-    <form id="form2" class="form-container">
+    
+
+    <form id="form2" method="post" action="cliente.jsp" class="form-container">
         <!-- Form 2 content goes here -->
         <label for="input2">Input 2:</label>
         <input type="text" id="input2" name="input2">
     </form>
 
-    <form id="form3" class="form-container">
+    <form id="form3" method="post" action="cliente.jsp" class="form-container">
         <!-- Form 3 content goes here -->
         <label for="input3">Input 3:</label>
         <input type="text" id="input3" name="input3">
