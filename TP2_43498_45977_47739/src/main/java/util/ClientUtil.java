@@ -4,7 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ClientUtil {
 	
@@ -16,7 +17,6 @@ public class ClientUtil {
         resultSet = statement.executeQuery();
 
         if (resultSet.next()) {
-        	System.out.println(resultSet.getInt("NIF"));
         	return resultSet;
         }
         else {
@@ -24,44 +24,32 @@ public class ClientUtil {
 		}
 	}
 	
-	public static boolean changeClientInfo(Connection connection, String userNameForm, String userBirthDateForm,
-			String userSelfPhoneForm, String userEmailForm, int userNIF, String userEmail, boolean emailChanged) {
+	public static boolean changeClientInfo(Connection connection, String userNameForm,
+			String userBirthDateForm,String userSelfPhoneForm, int userNIF) {
 		
 		String query = "UPDATE `sbd_tp1_43498_45977_47739`.`cliente` SET `Nome` = '"+ userNameForm +"', `DataDeNascimento` = '"+ userBirthDateForm +
     			"', `Telemovel` = '"+ userSelfPhoneForm +"' WHERE (`Nif` = '"+ userNIF +"');";
-		
-		if(emailChanged) {
-			
-			//Versão a não usar, mas fica aqui caso se toque no email e assim não dá erro
-			String updateQuery = "UPDATE `sbd_tp1_43498_45977_47739`.`cliente` SET `Email` = '"+ userEmailForm +"' WHERE `Email` = '"+ userEmail +"';"
-					+ "UPDATE `sbd_tp1_43498_45977_47739`.`utilizador` SET `Email` = '"+ userEmailForm +"' `WHERE Email` = '"+ userEmailForm +"';";
-			
-			try {
-				/*Statement check_statement =  connection.createStatement();
-				check_statement.execute("SET FOREIGN_KEY_CHECKS = 0;");
-				statement = connection.prepareStatement(updateQuery);
-				statement.executeUpdate();
-				check_statement.execute("SET FOREIGN_KEY_CHECKS = 1;");*/
-				statement = connection.prepareStatement(query);
-				statement.executeUpdate();
 
-				return true;
-				
-			} catch (SQLException e) {
-				e.printStackTrace();
-				return false;
-			}	
+		try {
+			statement = connection.prepareStatement(query);
+			statement.executeUpdate();
+			return true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return false;
 		}
-		else {
-			try {
-				statement = connection.prepareStatement(query);
-				statement.executeUpdate();
-				return true;
-			} catch (SQLException e) {
-				e.printStackTrace();
-				return false;
-			}
+	}
+	
+	public static List<String> getPatologiasOrObjetivos(Connection connection, String query) throws SQLException {
+		statement = connection.prepareStatement(query);
+        resultSet = statement.executeQuery();
+        List<String> patologiaStrings = new ArrayList<String>();
+        
+        while (resultSet.next()) {
+			patologiaStrings.add(resultSet.getString("Nome"));
 		}
+
+		return patologiaStrings;
 	}
 	
 }

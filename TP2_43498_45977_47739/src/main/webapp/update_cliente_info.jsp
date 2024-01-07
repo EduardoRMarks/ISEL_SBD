@@ -38,7 +38,6 @@
 	boolean updateResult = false;
 	
 	user = (User) session.getAttribute("user");
-	System.out.println(user.toString());
 	userEmail = user.getUserEmail();
 	//userEmail = "eduardo@aol.com";
 	
@@ -73,16 +72,14 @@
             String userNameForm = request.getParameter("nome");
             String userBirthDateForm = request.getParameter("DataDeNascimento");
             String userSelfPhoneForm = request.getParameter("Telemovel");
-            String userEmailForm = request.getParameter("Email");
             
             if(!userNameForm.equals(userName) || !userBirthDateForm.equals(dateFormat.format(userBirthDate)) 
-            		|| !userSelfPhoneForm.equals(userSelfPhone) || !userEmailForm.equals(userEmail)){
+            		|| !userSelfPhoneForm.equals(userSelfPhone)){
             	
-            	updateResult = ClientUtil.changeClientInfo(connection, userNameForm, userBirthDateForm, userSelfPhoneForm,
-            			userEmailForm, userNIF, userEmail, !userEmailForm.equals(userEmail));
+            	updateResult = ClientUtil.changeClientInfo(connection, userNameForm,
+            			userBirthDateForm, userSelfPhoneForm, userNIF);
             }          
             
-            request.getSession().setAttribute("userEmail", userEmailForm);
             response.sendRedirect("cliente.jsp");
 
 		} catch (Exception e) {
@@ -106,11 +103,16 @@
     	<label for="Telemovel">Telemovel:</label>
     	<input type="text" name="Telemovel" value="<%= userSelfPhone %>" required/><br/>
     	
-    	<label for="Email">Email:</label>
-    	<input type="text" name="Email" value="<%= userEmail %>" required/><br/>
-    	
         <input type="submit" value="update"/>
     </form>
     </div>
+    
+    <button onclick="redirectToPage('cliente.jsp')">Voltar</button>
+	
+	<script>
+	    function redirectToPage(escolha) {
+	    	window.location.href = encodeURIComponent(escolha);
+	    }
+    </script>
 </body>
 </html>
