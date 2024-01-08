@@ -20,6 +20,16 @@
 <head>
 <meta charset="UTF-8">
 <title>Patologias</title>
+
+	<style>
+        .container {
+            display: flex;
+            align-items: center;
+        }
+        h3 {
+            margin-right: 10px;
+        }
+    </style>
 </head>
 <body>
 
@@ -32,6 +42,7 @@
 	
 	user = (Cliente) session.getAttribute("user");
 	userNif = user.getNIF();
+	//userNif = 229495027;
 	
 	try {
         connection = DBConnectionManager.getConnection();
@@ -40,13 +51,20 @@
         
         listaPatologias = ClientUtil.getPatologiasOrObjetivos(connection, query);
         
-        for(String p: listaPatologias) {
-        	%> 
-        	<h1><%= p %></h1>
-        	<%
-			System.out.println(p);
-		}
-        
+        if(listaPatologias.size() == 0){
+        	%><h2>Atualmente não tem nenhuma patologia adicionada.</h2><%
+        }
+        else{
+        	for(String p: listaPatologias) {
+            	%>
+
+    			<div class="container">
+    			    <h3><%= p %></h3>
+    			    <button type="button" onclick="redirectToPage('eliminar', '<%= p %>')">Eliminar</button>
+    			</div>
+            	<%
+    		}
+        }        
 	} catch (Exception e) {
         e.printStackTrace();
     } finally {
@@ -54,10 +72,35 @@
     }
 %>
 
-	<button onclick="redirectToPage('cliente.jsp')">Voltar</button>
+	<div class="container">
+	    <label for="inputPatologia">Adicionar patologia:</label>
+		<input type="text" id="inputPatologia">
+	    <button type="button" onclick="redirectToPage('adicionar', '')">Adicionar</button>
+	</div>
+
+	<button onclick="goBack('cliente.jsp')">Voltar</button>
 	
 	<script>
-	    function redirectToPage(escolha) {
+		//vai adicionar ou eliminar, dependendo da ação
+	    function redirectToPage(action, patologia) {
+
+	    	var encodedTarget = encodeURIComponent(action);
+	    	if(action === 'eliminar'){
+	    		window.location.href = "patologia_objetivos_actions.jsp?which_table="+ encodeURIComponent("patologia") + "&action=" + encodeURIComponent(action) + 
+	    				"&patologia=" + encodeURIComponent(patologia) + "&nif=" + encodeURIComponent(<%= userNif %>);
+	    	}
+	    	if(action === "adicionar"){
+	    		var inputElement = document.getElementById("inputPatologia");
+	            var inputPatologia = inputElement.value;
+	            
+	            if(inputPatologia.length > 0){
+	            	window.location.href = "patologia_objetivos_actions.jsp?which_table="+ encodeURIComponent("patologia") + "&action=" + encodeURIComponent(action) + 
+    				"&patologia=" + encodeURIComponent(inputPatologia) + "&nif=" + encodeURIComponent(<%= userNif %>);
+	            }
+	    	}
+	    }
+		
+	    function goBack(escolha) {
 	    	window.location.href = encodeURIComponent(escolha);
 	    }
     </script>

@@ -49,5 +49,33 @@ public class ClientUtil {
 
 		return patologiaStrings;
 	}
+	
+	public static boolean addOrDelete(Connection connection, String which_table, String action, String patologia_objetivo, String nif){
+		
+		if(action.equals("adicionar")) {
+			String query = "INSERT INTO `sbd_tp1_43498_45977_47739`.`"+ which_table +"` (`Nome`, `NifCliente`) VALUES ('"+ patologia_objetivo +"', '"+ nif +"');";
+			try {
+				statement = connection.prepareStatement(query);
+				statement.executeUpdate();
+				return true;
+			} catch (SQLException e) {
+				e.printStackTrace();
+				return false;
+			}
+		}
+		if (action.equals("eliminar")) {
+			String query = "DELETE FROM `sbd_tp1_43498_45977_47739`.`"+ which_table +"` WHERE (`Nome` = '"+ patologia_objetivo +"') and (`NifCliente` = '"+ nif +"');";
+			try {
+				statement = connection.prepareStatement(query);
+				statement.executeUpdate();
+				return true;
+			} catch (SQLException e) {
+				e.printStackTrace();
+				return false;
+			}
+		}
+		
+		return false;
+	}
 
 }
