@@ -1,6 +1,6 @@
 <%@page import="java.sql.Date"%>
 <%@page import="java.io.Console"%>
-<%@page import="model.User" %>
+<%@page import="model.Cliente" %>
 <%@page import="model.UserRole" %>
 <%@page import="util.DBConnectionManager"%>
 <%@page import="util.ClientUtil"%>
@@ -27,7 +27,7 @@
 	Connection connection = null;
 	PreparedStatement statement = null;
 	ResultSet resultSet = null;
-	User user = null;
+	Cliente cliente = null;
 	
 	int userNIF = 0;
 	String userName = null;
@@ -37,8 +37,8 @@
 	
 	boolean updateResult = false;
 	
-	user = (User) session.getAttribute("user");
-	userEmail = user.getUserEmail();
+	cliente = (Cliente) session.getAttribute("user");
+	userEmail = cliente.getUserEmail();
 	//userEmail = "eduardo@aol.com";
 	
 	try {
@@ -53,8 +53,8 @@
         userBirthDate = resultSet.getDate("DataDeNascimento");
         userSelfPhone = resultSet.getString("Telemovel");
         
-        user = new User(resultSet.getInt("NIF"), userEmail, UserRole.CLIENT);
-        session.setAttribute("user", user);
+        cliente = new Cliente(resultSet.getInt("NIF"), userEmail, UserRole.CLIENT);
+        session.setAttribute("user", cliente);
         String client = "client" + userNIF;
         session.setAttribute("client", client);
         
@@ -114,5 +114,6 @@
 	    	window.location.href = encodeURIComponent(escolha);
 	    }
     </script>
+    
 </body>
 </html>

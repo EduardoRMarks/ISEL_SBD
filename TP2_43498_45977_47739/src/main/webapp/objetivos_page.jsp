@@ -1,7 +1,7 @@
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.sql.Date"%>
 <%@page import="java.io.Console"%>
-<%@page import="model.User" %>
+<%@page import="model.Cliente" %>
 <%@page import="model.UserRole" %>
 <%@page import="util.DBConnectionManager"%>
 <%@page import="util.ClientUtil"%>
@@ -27,11 +27,11 @@
 	Connection connection = null;
 	PreparedStatement statement = null;
 	List<String> listaPatologias = new ArrayList<String>();
-	User user = null;
+	Cliente cliente = null;
 	int userNif = 0; 
 	
-	user = (User) session.getAttribute("user");
-	userNif = user.getNIF();
+	cliente = (Cliente) session.getAttribute("user");
+	userNif = cliente.getNIF();
 	
 	try {
         connection = DBConnectionManager.getConnection();

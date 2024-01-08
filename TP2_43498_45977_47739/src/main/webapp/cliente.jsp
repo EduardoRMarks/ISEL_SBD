@@ -1,6 +1,6 @@
 <%@page import="java.sql.Date"%>
 <%@page import="java.io.Console"%>
-<%@page import="model.User" %>
+<%@page import="model.Cliente" %>
 <%@page import="model.UserRole" %>
 <%@page import="util.DBConnectionManager"%>
 <%@page import="util.ClientUtil"%>
@@ -27,7 +27,7 @@
 	Connection connection = null;
 	PreparedStatement statement = null;
 	ResultSet resultSet = null;
-	User user = null;
+	Cliente cliente = null;
 	
 	String userNIF = null;
 	String userName = null;
@@ -49,8 +49,8 @@
         userBirthDate = resultSet.getDate("DataDeNascimento");
         userSelfPhone = resultSet.getString("Telemovel");
         
-        user = new User(resultSet.getInt("NIF"), userEmail, UserRole.CLIENT);
-        session.setAttribute("user", user);
+        cliente = new Cliente(resultSet.getInt("NIF"), userEmail, UserRole.CLIENT);
+        session.setAttribute("user", cliente);
         String client = "client" + userNIF;
         session.setAttribute("client", client);
         
@@ -63,20 +63,19 @@
 %>
 
 <div>
-	<h1><%= user.toString() %></h1>
-	<h3>Bem vindo <%= userName %></h3>
+
+	<h1><%= cliente.toString() %></h1>
+	<h3>Bem vindo, <%= userName %></h3>
 	<button onclick="redirectToPage('update_cliente_info.jsp')">Update Info</button>
 	<button onclick="redirectToPage('patologias_page.jsp')">Patologias</button>
 	<button onclick="redirectToPage('objetivos_page.jsp')">Objetivos</button>
     
-
-
     <script>
 	    function redirectToPage(escolha) {
 	    	var encodedTarget = encodeURIComponent(escolha);
-	    	window.location.href = encodedTarget;
-	    }
+	    	window.location.href = encodedTarget; }
     </script>
+    
 </div>
 
 </body>

@@ -6,7 +6,7 @@
 </head>
 <body>
 
-<h1>Welcome, Administrator!</h1>s
+<h1>Welcome, Administrator!</h1>
 
 <div style="text-align: center; margin-top: 20px;">
     <!-- Button to change work hours of a gym -->
