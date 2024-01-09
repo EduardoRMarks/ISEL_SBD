@@ -31,7 +31,31 @@ public class PtUtil {
             resultSet = statement.executeQuery();
 
             while (resultSet.next()) {
-                clientesStrings.add(resultSet.getString("Nome")); }
+            	System.out.println();
+                clientesStrings.add(resultSet.getString("Nome")); 
+                System.out.println(clientesStrings);}
+        } 
+        finally {
+
+            if (resultSet != null) { resultSet.close(); }
+            if (statement != null) { statement.close(); }
+        }
+
+
+        return clientesStrings;
+    }
+	
+    public static List<String> getNifClientes(Connection connection, String query) throws SQLException {
+        PreparedStatement statement = null;
+        ResultSet resultSet = null;
+        List<String> clientesStrings = new ArrayList<String>();
+
+        try {
+            statement = connection.prepareStatement(query);
+            resultSet = statement.executeQuery();
+
+            while (resultSet.next()) {
+                clientesStrings.add(resultSet.getString("NifCliente")); }
         } 
         finally {
 
@@ -40,6 +64,52 @@ public class PtUtil {
         }
 
         return clientesStrings;
+    }
+    
+    public static String getNomeCliente(Connection connection, String query) throws SQLException {
+        PreparedStatement statement = null;
+        ResultSet resultSet = null;
+       
+        String nomeCliente = null;
+        
+        try {
+            statement = connection.prepareStatement(query);
+            resultSet = statement.executeQuery();
+
+            while (resultSet.next()) {
+            	nomeCliente = resultSet.getString("Nome"); }
+        } 
+        finally {
+
+            if (resultSet != null) { resultSet.close(); }
+            if (statement != null) { statement.close(); }
+        }
+        
+        return nomeCliente;
+    }
+    
+    public static List<String> getEquipamentosDisponiveis(Connection connection, String query) throws SQLException {
+        PreparedStatement statement = null;
+        ResultSet resultSet = null;
+        List<String> availableEquipments = new ArrayList<>();
+
+        try {
+            statement = connection.prepareStatement(query);
+            resultSet = statement.executeQuery();
+
+            while (resultSet.next()) {
+                availableEquipments.add(resultSet.getString("Nome"));
+            }
+        } finally {
+            if (resultSet != null) {
+                resultSet.close();
+            }
+            if (statement != null) {
+                statement.close();
+            }
+        }
+
+        return availableEquipments;
     }
 
 }

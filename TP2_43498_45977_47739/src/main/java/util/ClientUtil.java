@@ -39,11 +39,15 @@ public class ClientUtil {
 	}
 
 	public static List<String> getPatologiasOrObjetivos(Connection connection, String query) throws SQLException {
+		
+		System.out.println("QUERY: " + query);
+		
 		statement = connection.prepareStatement(query);
 		resultSet = statement.executeQuery();
 		List<String> patologiaStrings = new ArrayList<String>();
 
 		while (resultSet.next()) {
+			System.out.println("NOME PATOLOGIA/OBJETIVO : " + resultSet.getString("Nome"));
 			patologiaStrings.add(resultSet.getString("Nome"));
 		}
 

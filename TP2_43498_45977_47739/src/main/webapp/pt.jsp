@@ -24,13 +24,13 @@
 	ResultSet resultSet = null;
 	
 	Pt user = null;
-	String ptId = null;
-	String userName = null;
+	String idPT = null;
+	String ptName = null;
 	String userSelfPhone = null;
 	
 	String userEmail = (String) session.getAttribute("userEmail");
 	String userPhoto = (String) session.getAttribute("userPhoto");
-	//System.out.println(userName);
+
 	
 	try {
         connection = DBConnectionManager.getConnection();
@@ -39,14 +39,15 @@
         
         resultSet = PtUtil.getPtInfo(connection, query);
         
-        userName = resultSet.getString("Nome");
+        idPT = resultSet.getString("Id");
+        ptName = resultSet.getString("Nome");
         userSelfPhone = resultSet.getString("Telemovel");
         
         user = new Pt(resultSet.getInt("ID"), userEmail, UserRole.PERSONAL_TRAINER);
         session.setAttribute("user", user);
-        String pt = "pt" + ptId;
-        session.setAttribute("pt", pt);
-           
+        request.getSession().setAttribute("nomePt", ptName);
+        request.getSession().setAttribute("idPT", idPT);
+       
 	} 
 	catch (Exception e) { e.printStackTrace(); } 
 	finally { DBConnectionManager.close(resultSet, statement, connection); }
@@ -56,12 +57,12 @@
 <div>
 
 	<h1><%= user.toString() %></h1>
-	<h3>Bem vindo, <%= userName %></h3>
+	<h3>Bem vindo, <%= ptName %></h3>
 	<button onclick="redirectToPage('publicarManchaDisponibilidadePage.jsp')">Publicas manchas de disponibilidade</button>
 	<button onclick="redirectToPage('confirmarCancelarAtividadesPage.jsp')">Confirmar / Cancelar atividades</button>
 	<button onclick="redirectToPage('buscarClientePage.jsp')">Procurar Cliente</button>
 	<button onclick="redirectToPage('agendarParticipacaoClientePage.jsp')">Agendar participação Cliente</button>
-	<button onclick="redirectToPage('recomendarClientePage.jsp')">Recomendar Cliente</button>
+	<button onclick="redirectToPage('recomendarClientesPage.jsp')">Recomendar Clientes</button>
 
 	<script>
 	    function redirectToPage(escolha) {

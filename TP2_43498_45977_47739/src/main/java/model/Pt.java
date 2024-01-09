@@ -13,23 +13,19 @@ public class Pt {
     }
     
     public int getID() { return ID; }
-
     public void setID(int ID) { this.ID = ID; }
 
-    public String getUserEmail() { return ptEmail; }
+    public String getPtEmail() { return ptEmail; }
+    public void setPtEmail(String ptEmail) {
+        this.ptEmail = ptEmail; }
 
-    public void setUserEmail(String userEmail) {
-        this.ptEmail = userEmail; }
-
-    public UserRole getRole() {
-        return role; }
-
-    public void setRole(UserRole role) {
-        this.role = role; }
+    public UserRole getRole() { return role; }
+    public void setRole(UserRole role) { this.role = role; }
     
     public String toString() {
 		return role + " com o ID " + ID + " e com o email " + ptEmail ;	
-	}
-        
+
+    }
+    
 }
 

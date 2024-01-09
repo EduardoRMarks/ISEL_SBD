@@ -74,7 +74,7 @@ try {
 %>
 
 <div class="container">
-    <label for="inputObjetivo">Adicionar patologia:</label>
+    <label for="inputObjetivo">Adicionar objetivo:</label>
 	<input type="text" id="inputObjetivo">
     <button type="button" onclick="redirectToPage('adicionar', '')">Adicionar</button>
 </div>
