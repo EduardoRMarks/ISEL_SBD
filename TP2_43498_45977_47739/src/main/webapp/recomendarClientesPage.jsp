@@ -36,7 +36,12 @@
    	List<String> listaNifClientes = new ArrayList<String>();
    	ArrayList<String> listaClientes = new ArrayList<String>();
    	List<String> equipamentosDisponiveis = new ArrayList<String>();
+   	
+	List<String> listaNifClientesFinal = new ArrayList<String>();
    	List<String> listaClientesFinal = new ArrayList<String>();
+   	List<String> equipamentosIdDisponiveisFinal = new ArrayList<String>();
+   	List<String> equipamentosDisponiveisFinal = new ArrayList<String>();
+   	
    	
    	String idPT = (String) session.getAttribute("idPT");
    	String nomePt = (String) session.getAttribute("nomePt");
@@ -51,6 +56,9 @@
 
         resultSet = PtUtil.getPtInfo(connection, query);
         listaNifClientes = PtUtil.getNifClientes(connection, query);
+        
+        Set<String> clientesNifWithoutDuplicates = new LinkedHashSet<>(listaNifClientes);
+        listaNifClientesFinal = new ArrayList<>(clientesNifWithoutDuplicates);
         
         nifCliente = String.valueOf(resultSet.getInt("NifCliente"));
         idEquipamento = resultSet.getString("IdEquipamento");
@@ -68,11 +76,22 @@
         listaClientesFinal = new ArrayList<>(setWithoutDuplicates);
 
         // Fetch available equipment from the database
-        query = "SELECT Nome FROM sbd_tp1_43498_45977_47739.equipamento WHERE Estado = 1";
+        query = "SELECT Id FROM sbd_tp1_43498_45977_47739.equipamento WHERE Estado = 1";
         equipamentosDisponiveis = PtUtil.getEquipamentosDisponiveis(connection, query);
         
-        for (String equipment : equipamentosDisponiveis) {
-            System.out.println("Equipment: " + equipment); // Output equipment names for debugging
+        Set<String> equipamentosIdWithoutDuplicates = new LinkedHashSet<>(equipamentosDisponiveis);
+        equipamentosIdDisponiveisFinal = new ArrayList<>(equipamentosIdWithoutDuplicates);
+        
+        for (String s : equipamentosIdDisponiveisFinal) {
+        	String queryEquipamento = "SELECT Nome FROM sbd_tp1_43498_45977_47739.equipamento WHERE Id = '" + s + "'";
+        	equipamentosDisponiveisFinal.add(PtUtil.getNomeEquipamento(connection, queryEquipamento));
+        }
+
+        Set<String> equipamentosWithoutDuplicates = new LinkedHashSet<>(equipamentosDisponiveisFinal);
+        equipamentosDisponiveisFinal = new ArrayList<>(equipamentosWithoutDuplicates);
+        
+        for(String s : equipamentosDisponiveisFinal) {
+        	System.out.println(s);
         }
         
 	} catch (Exception e) {
@@ -96,42 +115,112 @@
 		<div class="container">
 		    <h2>Clientes:</h2>
 		    <%
-		    for(String o: listaClientesFinal) {
+		    for(int i = 0; i < listaNifClientesFinal.size(); i++) {
+		    	int equipIndex = 0;
 		        %>
 		        <div>
-		            <h3><%= o %></h3>
-		            <form action="process_recommendation.jsp" method="post">
-		                <!-- Dropdown for equipment selection -->
-		                <label for="equipamento_<%= o %>">Selecionar Equipamento:</label>
-		                <select id="equipamento_<%= o %>" name="equipamento_<%= o %>">
-		                    <%
-
-		                    // Create options for each available equipment
-		                    for (String equipment : equipamentosDisponiveis) {
-		                        %>
-		                        <option value="<%= equipment %>"><%= equipment %></option>
-		                        <%
-		                    }
-		                    %>
+			        <h3><%= listaClientesFinal.get(i) %> - NIF: <%= listaNifClientesFinal.get(i) %></h3>
+			        <form action="" method="post">
+			
+			            <!-- Dropdown for equipment selection -->
+			            <label for="equipamento_<%= i %>">Selecionar Equipamento:</label>
+			            <select id="equipamento_<%= i %>" name="equipamento_<%= i %>">
+							<%
+							for (int j = 0; j < equipamentosIdDisponiveisFinal.size(); j++) {
+							    String equipmentId = equipamentosIdDisponiveisFinal.get(j);
+							    String equipmentName = equipamentosDisponiveisFinal.get(j);
+							    String selected = "";
+							    if (equipmentId.equals(idEquipamento)) {
+							        selected = "selected";
+							    }
+							%>
+							<option value="<%= equipmentId %>" <%= selected %>><%= equipmentName %></option>
+							<%
+							}
+							%>
+			            </select><br>
+			
+			            <!-- Input for date selection -->
+			            <label for="data_<%= i %>">Escolher Data:</label>
+			            <input type="date" id="data_<%= i %>" name="data_<%= i %>"><br>
+			
+						<script>
+						    function convertDateToString(index) {
+						        var selectedDate = document.getElementById("data_" + index).value;
+						        // You can use 'selectedDate' as needed, such as sending it to the server or performing further actions
+						    }
+						</script>
+			
+		                <!-- Dropdown for binary choice -->
+		                <label for="choice_<%= i %>">Uso:</label>
+		                <select id="choice_<%= i %>" name="choice_<%= i %>">
+		                    <option value="1">Sim</option>
+		                    <option value="0">Não</option>
 		                </select><br>
-		
-		                <!-- Input for date selection -->
-		                <label for="data_<%= o %>">Escolher Data:</label>
-		                <input type="date" id="data_<%= o %>" name="data_<%= o %>"><br>
-		
-		                <!-- Recommendation button -->
-		                <input type="submit" value="Fazer Recomendação">
-		            </form>
-		        </div>
-		        <%
-		    }
-		    %>
-		</div>
-	    <%
+			
+						<script>
+						    function getDropdownValue(index) {
+						        var dropdown = document.getElementById("choice_" + index);
+						        var selectedValue = dropdown.value;
+						    }
+						</script>
+
+						<br>
+			
+						               <!-- Button to trigger the redirection -->
+                <div class="container">
+                
+                    <!-- Pass necessary Java variables to JavaScript function -->
+					<button type="button" onclick="redirectToPageRecomendacao(
+					    '<%= idPT %>',
+					    '<%= listaNifClientesFinal.get(i) %>',
+						'<%= equipamentosIdDisponiveisFinal.get(equipIndex) %>',
+						'<%= i %>'
+					)">Fazer Recomendacao</button>
+                </div>
+            </form>
+        </div>
+        <%
     }
     %>
 </div>
+<%
+}
+%>
 
+<!-- JavaScript section -->
+<script>
+	function redirectToPageRecomendacao(idPT, nifCliente, index) {
+	    var selectedDate = document.getElementById("data_" + index).value;
+	    var dropdownValue = document.getElementById("choice_" + index).value;
+	    var equipmentDropdown = document.getElementById("equipamento_" + index);
+	    var equipmentId = equipmentDropdown.options[equipmentDropdown.selectedIndex].value;
+	
+	    var url = "recomendacoesPage.jsp?idPt=" + encodeURIComponent(idPT) +
+	        "&nifCliente=" + encodeURIComponent(nifCliente) +
+	        "&idEquipamento=" + encodeURIComponent(equipmentId) +
+	        "&nifClube=505200597" +
+	        "&data=" + encodeURIComponent(selectedDate) +
+	        "&uso=" + encodeURIComponent(dropdownValue) +
+	        "&action=fazerRecomendacao";
+	
+	    console.log("Constructed URL:", url);
+	
+	    window.location.href = url; // Redirect to the constructed URL
+	}
+</script>
 
+<br>
+<hr>
+<br>
+
+<div>
+    <button id="voltarButton" onclick="redirectToPage('pt.jsp')">Voltar</button>
+</div>
+<script>
+    function redirectToPage(escolha) {
+        window.location.href = escolha; }
+
+</script>
 </body>
 </html>

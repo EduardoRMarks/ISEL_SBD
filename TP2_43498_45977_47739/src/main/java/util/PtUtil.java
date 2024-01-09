@@ -98,7 +98,31 @@ public class PtUtil {
             resultSet = statement.executeQuery();
 
             while (resultSet.next()) {
-                availableEquipments.add(resultSet.getString("Nome"));
+                availableEquipments.add(resultSet.getString("Id"));
+            }
+        } finally {
+            if (resultSet != null) {
+                resultSet.close();
+            }
+            if (statement != null) {
+                statement.close();
+            }
+        }
+
+        return availableEquipments;
+    }
+    
+    public static String getNomeEquipamento(Connection connection, String query) throws SQLException {
+        PreparedStatement statement = null;
+        ResultSet resultSet = null;
+        String availableEquipments = null;
+
+        try {
+            statement = connection.prepareStatement(query);
+            resultSet = statement.executeQuery();
+
+            while (resultSet.next()) {
+            	availableEquipments = resultSet.getString("Nome");
             }
         } finally {
             if (resultSet != null) {
@@ -112,4 +136,35 @@ public class PtUtil {
         return availableEquipments;
     }
 
+    public static boolean addRecomendacao(Connection connection, String idPt, String nifCliente, String idEquipamento, String nifClube, String data, boolean usoSQL) {
+        PreparedStatement statement = null;
+
+        try {
+        	String query = "INSERT INTO sbd_tp1_43498_45977_47739.pt_cliente_equipamento (`IdPt`, `NifCliente`, `IdEquipamento`, `NifClube`, `Data`, `Uso`)" +
+        		    " VALUES (?, ?, ?, ?, ?, ?)" +
+        		    " ON DUPLICATE KEY UPDATE `IdEquipamento` = VALUES(`IdEquipamento`), `Data` = VALUES(`Data`), `Uso` = VALUES(`Uso`)";
+
+            statement = connection.prepareStatement(query);
+            statement.setString(1, idPt);
+            statement.setString(2, nifCliente);
+            statement.setString(3, idEquipamento);
+            statement.setString(4, nifClube);
+            statement.setString(5, data);
+            statement.setBoolean(6, usoSQL);
+            statement.executeUpdate();
+            return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        } finally {
+            if (statement != null) {
+                try {
+                    statement.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+    
 }
