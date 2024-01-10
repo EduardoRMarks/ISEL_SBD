@@ -10,111 +10,111 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DBConnectionManager {
-    private static final String JDBC_URL = "jdbc:mysql://localhost:3306/sbd_tp1_43498_45977_47739";
-    private static final String USERNAME = "root";
-    private static final String PASSWORD = "toor";
+	private static final String JDBC_URL = "jdbc:mysql://localhost:3306/sbd_tp1_43498_45977_47739";
+	private static final String USERNAME = "root";
+	private static final String PASSWORD = "toor";
 
-    public static Connection getConnection() throws SQLException {
-        try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            return DriverManager.getConnection(JDBC_URL, USERNAME, PASSWORD);
-        } catch (ClassNotFoundException e) {
-            throw new SQLException("Database driver not found.", e);
-        }
-    }
+	public static Connection getConnection() throws SQLException {
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			return DriverManager.getConnection(JDBC_URL, USERNAME, PASSWORD);
+		} catch (ClassNotFoundException e) {
+			throw new SQLException("Database driver not found.", e);
+		}
+	}
 
-    public static void closeConnection(Connection connection) {
-        if (connection != null) {
-            try {
-                connection.close();
-            } catch (SQLException e) {
-                e.printStackTrace(); // Handle the exception according to your needs.
-            }
-        }
-    }
-    
-    public static ResultSet getQueryResult(String QUERY, Connection connection) throws SQLException {
-    	List<String> emailList = new ArrayList<>();
-    	try {
-    		Statement stmt = connection.createStatement();
-        	ResultSet rs = stmt.executeQuery(QUERY);
-
-    		while (rs.next()) {
-    			String email = rs.getString("Email");
-                emailList.add(email);	
+	public static void closeConnection(Connection connection) {
+		if (connection != null) {
+			try {
+				connection.close();
+			} catch (SQLException e) {
+				e.printStackTrace(); // Handle the exception according to your needs.
 			}
-    		
-    		for (String email : emailList) {
-                System.out.println("Email: " + email);
-            }
-        	return rs;
+		}
+	}
+
+	public static ResultSet getQueryResult(String QUERY, Connection connection) throws SQLException {
+		List<String> emailList = new ArrayList<>();
+		try {
+			Statement stmt = connection.createStatement();
+			ResultSet rs = stmt.executeQuery(QUERY);
+
+			while (rs.next()) {
+				String email = rs.getString("Email");
+				emailList.add(email);
+			}
+
+			for (String email : emailList) {
+				System.out.println("Email: " + email);
+			}
+			return rs;
 		} catch (SQLException e) {
 			throw new SQLException(e);
 		}
 	}
-    
-    public static void close(ResultSet resultSet, PreparedStatement statement, Connection connection) {
-        try {
-            if (resultSet != null) {
-                resultSet.close();
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
 
-        try {
-            if (statement != null) {
-                statement.close();
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+	public static void close(ResultSet resultSet, PreparedStatement statement, Connection connection) {
+		try {
+			if (resultSet != null) {
+				resultSet.close();
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 
-        try {
-            if (connection != null) {
-                connection.close();
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-    
-    public static void close2(PreparedStatement statement, Connection connection) {
+		try {
+			if (statement != null) {
+				statement.close();
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 
-        try {
-            if (statement != null) {
-                statement.close();
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+		try {
+			if (connection != null) {
+				connection.close();
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
 
-        try {
-            if (connection != null) {
-                connection.close();
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-    
-    public static void closeStatement(PreparedStatement statement) {
-    	 try {
-             if (statement != null) {
-                 statement.close();
-             }
-         } catch (SQLException e) {
-             e.printStackTrace();
-         }
-    }
-    
-    public static void closeResultSet(ResultSet resultSet) {
-   	 try {
-            if (resultSet != null) {
-            	resultSet.close();
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-   }
+	public static void close2(PreparedStatement statement, Connection connection) {
+
+		try {
+			if (statement != null) {
+				statement.close();
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		try {
+			if (connection != null) {
+				connection.close();
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public static void closeStatement(PreparedStatement statement) {
+		try {
+			if (statement != null) {
+				statement.close();
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public static void closeResultSet(ResultSet resultSet) {
+		try {
+			if (resultSet != null) {
+				resultSet.close();
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
 }

@@ -22,7 +22,7 @@
     </form>
 
     <!-- Button to create user profiles -->
-    <form action="createUserProfiles.jsp">
+    <form action="createUserProfiles_xml.jsp">
         <input type="submit" value="Create User Profiles">
     </form>
 

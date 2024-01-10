@@ -12,20 +12,21 @@ public class ClientUtil {
 
 	static PreparedStatement statement = null;
 	static ResultSet resultSet = null;
-	
-	public static boolean createCliente(Connection connection, String nome,
-			String nif, String birthdate, String selfPhone, String email, String password) {
-		
+
+	public static boolean createCliente(Connection connection, String nome, String nif, String birthdate,
+			String selfPhone, String email, String password) {
+
 		String hashedPassword = PasswordUtil.hashPassword(password);
-		
+
 		try {
-			String query = "INSERT INTO `sbd_tp1_43498_45977_47739`.`utilizador` (Email, Password, Role)"
-					+ " VALUES ('" + email + "', '" + hashedPassword + "', 'Cliente');";
+			String query = "INSERT INTO `sbd_tp1_43498_45977_47739`.`utilizador` (Email, Password, Role)" + " VALUES ('"
+					+ email + "', '" + hashedPassword + "', 'Cliente');";
 			statement = connection.prepareStatement(query);
 			statement.executeUpdate();
-			
+
 			query = "INSERT INTO `sbd_tp1_43498_45977_47739`.`cliente` (`Nif`, `Nome`, `DataDeNascimento`, "
-					+ "`Telemovel`, `Email`) VALUES ('" + nif + "', '" + nome + "', '" + birthdate + "', '" + selfPhone + "', '" + email + "');";
+					+ "`Telemovel`, `Email`) VALUES ('" + nif + "', '" + nome + "', '" + birthdate + "', '" + selfPhone
+					+ "', '" + email + "');";
 			statement = connection.prepareStatement(query);
 			statement.executeUpdate();
 			return true;
@@ -40,8 +41,10 @@ public class ClientUtil {
 		resultSet = statement.executeQuery();
 
 		if (resultSet.next()) {
-			return resultSet; } 
-		else { return null; }
+			return resultSet;
+		} else {
+			return null;
+		}
 	}
 
 	public static boolean changeClientInfo(Connection connection, String userNameForm, String userBirthDateForm,
@@ -60,12 +63,13 @@ public class ClientUtil {
 			return false;
 		}
 	}
-	
+
 	public static boolean changePassword(Connection connection, String userEmail, String password) {
-		
+
 		String hashedPassword = PasswordUtil.hashPassword(password);
-		
-		String query = "UPDATE `sbd_tp1_43498_45977_47739`.`utilizador` SET `Password` = '" + hashedPassword +"' WHERE (`Email` = '" + userEmail + "');";
+
+		String query = "UPDATE `sbd_tp1_43498_45977_47739`.`utilizador` SET `Password` = '" + hashedPassword
+				+ "' WHERE (`Email` = '" + userEmail + "');";
 		try {
 			statement = connection.prepareStatement(query);
 			statement.executeUpdate();
@@ -77,7 +81,6 @@ public class ClientUtil {
 	}
 
 	public static List<String> getPatologiasOrObjetivos(Connection connection, String query) throws SQLException {
-		
 
 		statement = connection.prepareStatement(query);
 		resultSet = statement.executeQuery();
@@ -90,9 +93,9 @@ public class ClientUtil {
 
 		return patologiaStrings;
 	}
-	
+
 	public static List<String> getRecomendacoes(Connection connection, String query) throws SQLException {
-		
+
 		statement = connection.prepareStatement(query);
 		resultSet = statement.executeQuery();
 		List<String> recomendacaoStrings = new ArrayList<String>();
@@ -106,11 +109,13 @@ public class ClientUtil {
 
 		return recomendacaoStrings;
 	}
-	
-	public static boolean addOrDelete(Connection connection, String which_table, String action, String patologia_objetivo, String nif){
-		
-		if(action.equals("adicionar")) {
-			String query = "INSERT INTO `sbd_tp1_43498_45977_47739`.`"+ which_table +"` (`Nome`, `NifCliente`) VALUES ('"+ patologia_objetivo +"', '"+ nif +"');";
+
+	public static boolean addOrDelete(Connection connection, String which_table, String action,
+			String patologia_objetivo, String nif) {
+
+		if (action.equals("adicionar")) {
+			String query = "INSERT INTO `sbd_tp1_43498_45977_47739`.`" + which_table
+					+ "` (`Nome`, `NifCliente`) VALUES ('" + patologia_objetivo + "', '" + nif + "');";
 			try {
 				statement = connection.prepareStatement(query);
 				statement.executeUpdate();
@@ -121,7 +126,8 @@ public class ClientUtil {
 			}
 		}
 		if (action.equals("eliminar")) {
-			String query = "DELETE FROM `sbd_tp1_43498_45977_47739`.`"+ which_table +"` WHERE (`Nome` = '"+ patologia_objetivo +"') and (`NifCliente` = '"+ nif +"');";
+			String query = "DELETE FROM `sbd_tp1_43498_45977_47739`.`" + which_table + "` WHERE (`Nome` = '"
+					+ patologia_objetivo + "') and (`NifCliente` = '" + nif + "');";
 			try {
 				statement = connection.prepareStatement(query);
 				statement.executeUpdate();
@@ -131,12 +137,13 @@ public class ClientUtil {
 				return false;
 			}
 		}
-		
+
 		return false;
 	}
-	
-	public static boolean inscrito (Connection connection, String idAtividade, int nifCliente) {
-		String query = "SELECT * FROM sbd_tp1_43498_45977_47739.cliente_atividade WHERE IdAtividade = '" + idAtividade + "' AND NifCliente = '" + nifCliente + "';";
+
+	public static boolean inscrito(Connection connection, String idAtividade, int nifCliente) {
+		String query = "SELECT * FROM sbd_tp1_43498_45977_47739.cliente_atividade WHERE IdAtividade = '" + idAtividade
+				+ "' AND NifCliente = '" + nifCliente + "';";
 		try {
 			statement = connection.prepareStatement(query);
 			resultSet = statement.executeQuery();
@@ -149,16 +156,18 @@ public class ClientUtil {
 			return false;
 		}
 	}
-	
-	public static boolean inscrever(Connection connection, String tipoAtividade, String idAtividade, String userNif, String idPt) {
+
+	public static boolean inscrever(Connection connection, String tipoAtividade, String idAtividade, String userNif,
+			String idPt) {
 		String query = null;
 		if (tipoAtividade.equals("individuais")) {
 			try {
 				query = "INSERT INTO `sbd_tp1_43498_45977_47739`.`cliente_atividade` "
-						+ "(`NifCliente`, `IdAtividade`, `IdPt`) VALUES ('" + userNif + "', '" + idAtividade + "', '" + idPt + "');";
+						+ "(`NifCliente`, `IdAtividade`, `IdPt`) VALUES ('" + userNif + "', '" + idAtividade + "', '"
+						+ idPt + "');";
 				statement = connection.prepareStatement(query);
 				statement.executeUpdate();
-				
+
 				query = "UPDATE `sbd_tp1_43498_45977_47739`.`atividade` SET `Estado` = 'InscricoesFechadas' "
 						+ "WHERE (`Id` = '" + idAtividade + "') and (`IdPt` = '" + idPt + "');";
 				statement = connection.prepareStatement(query);
@@ -168,60 +177,62 @@ public class ClientUtil {
 				e.printStackTrace();
 				return false;
 			}
-		}
-		else {	    	
-            try {
-            	query = "SELECT MaxParticipantes FROM sbd_tp1_43498_45977_47739.atividade WHERE Id='" + idAtividade + "';";
-            	statement = connection.prepareStatement(query);
-        		resultSet = statement.executeQuery();
-        		int maxInscricoes = 0;
+		} else {
+			try {
+				query = "SELECT MaxParticipantes FROM sbd_tp1_43498_45977_47739.atividade WHERE Id='" + idAtividade
+						+ "';";
+				statement = connection.prepareStatement(query);
+				resultSet = statement.executeQuery();
+				int maxInscricoes = 0;
 
-        		if (resultSet.next()) {
-        			maxInscricoes = resultSet.getInt("MaxParticipantes");
-        		}         	
-            	
-            	int numeroInscritos = 0;
-            	
-            	query = "SELECT COUNT(*) AS user_count FROM sbd_tp1_43498_45977_47739.cliente_atividade WHERE IdAtividade='" + idAtividade + "'";
-            	
+				if (resultSet.next()) {
+					maxInscricoes = resultSet.getInt("MaxParticipantes");
+				}
+
+				int numeroInscritos = 0;
+
+				query = "SELECT COUNT(*) AS user_count FROM sbd_tp1_43498_45977_47739.cliente_atividade WHERE IdAtividade='"
+						+ idAtividade + "'";
+
 				statement = connection.prepareStatement(query);
 				ResultSet countResultSet = statement.executeQuery();
 
-                if (countResultSet.next()) {
-                	numeroInscritos = countResultSet.getInt("user_count");
-                }
-                
-                query = "INSERT INTO `sbd_tp1_43498_45977_47739`.`cliente_atividade` "
-						+ "(`NifCliente`, `IdAtividade`, `IdPt`) VALUES ('" + userNif + "', '" + idAtividade + "', '" + idPt + "');";
+				if (countResultSet.next()) {
+					numeroInscritos = countResultSet.getInt("user_count");
+				}
+
+				query = "INSERT INTO `sbd_tp1_43498_45977_47739`.`cliente_atividade` "
+						+ "(`NifCliente`, `IdAtividade`, `IdPt`) VALUES ('" + userNif + "', '" + idAtividade + "', '"
+						+ idPt + "');";
 				statement = connection.prepareStatement(query);
 				statement.executeUpdate();
-				
+
 				numeroInscritos++;
-				if(numeroInscritos == maxInscricoes) {
+				if (numeroInscritos == maxInscricoes) {
 					query = "UPDATE `sbd_tp1_43498_45977_47739`.`atividade` SET `Estado` = 'InscricoesFechadas' "
 							+ "WHERE (`Id` = '" + idAtividade + "') and (`IdPt` = '" + idPt + "');";
 					statement = connection.prepareStatement(query);
 					statement.executeUpdate();
 				}
-                
-                return true;
-            } catch (SQLException e) {
+
+				return true;
+			} catch (SQLException e) {
 				e.printStackTrace();
 				return false;
 			}
 		}
 	}
 
-	
-	public static boolean cancelar(Connection connection, String tipoAtividade, String idAtividade, String userNif, String idPt) {
+	public static boolean cancelar(Connection connection, String tipoAtividade, String idAtividade, String userNif,
+			String idPt) {
 		String query = null;
 		if (tipoAtividade.equals("individuais")) {
 			try {
-				query = "DELETE FROM `sbd_tp1_43498_45977_47739`.`cliente_atividade`"
-						+ " WHERE NifCliente = '" + userNif + "' and IdAtividade = '" + idAtividade + "' and IdPt = '" + idPt + "';";
+				query = "DELETE FROM `sbd_tp1_43498_45977_47739`.`cliente_atividade`" + " WHERE NifCliente = '"
+						+ userNif + "' and IdAtividade = '" + idAtividade + "' and IdPt = '" + idPt + "';";
 				statement = connection.prepareStatement(query);
 				statement.executeUpdate();
-				
+
 				query = "UPDATE `sbd_tp1_43498_45977_47739`.`atividade` SET `Estado` = 'InscricoesAbertas' "
 						+ "WHERE (`Id` = '" + idAtividade + "') and (`IdPt` = '" + idPt + "');";
 				statement = connection.prepareStatement(query);
@@ -231,68 +242,69 @@ public class ClientUtil {
 				e.printStackTrace();
 				return false;
 			}
-		}
-		else {
+		} else {
 			try {
-            	query = "SELECT MaxParticipantes FROM sbd_tp1_43498_45977_47739.atividade WHERE Id='" + idAtividade + "';";
-            	statement = connection.prepareStatement(query);
-        		resultSet = statement.executeQuery();
-        		int maxInscricoes = 0;
+				query = "SELECT MaxParticipantes FROM sbd_tp1_43498_45977_47739.atividade WHERE Id='" + idAtividade
+						+ "';";
+				statement = connection.prepareStatement(query);
+				resultSet = statement.executeQuery();
+				int maxInscricoes = 0;
 
-        		if (resultSet.next()) {
-        			maxInscricoes = resultSet.getInt("MaxParticipantes");
-        		}         	
-            	
-            	int numeroInscritos = 0;
-            	
-            	query = "SELECT COUNT(*) AS user_count FROM sbd_tp1_43498_45977_47739.cliente_atividade WHERE IdAtividade='" + idAtividade + "'";
-            	
+				if (resultSet.next()) {
+					maxInscricoes = resultSet.getInt("MaxParticipantes");
+				}
+
+				int numeroInscritos = 0;
+
+				query = "SELECT COUNT(*) AS user_count FROM sbd_tp1_43498_45977_47739.cliente_atividade WHERE IdAtividade='"
+						+ idAtividade + "'";
+
 				statement = connection.prepareStatement(query);
 				ResultSet countResultSet = statement.executeQuery();
 
-                if (countResultSet.next()) {
-                	numeroInscritos = countResultSet.getInt("user_count");
-                }
-                
-                query = "DELETE FROM `sbd_tp1_43498_45977_47739`.`cliente_atividade`"
-						+ " WHERE NifCliente = '" + userNif + "' and IdAtividade = '" + idAtividade + "' and IdPt = '" + idPt + "';";
+				if (countResultSet.next()) {
+					numeroInscritos = countResultSet.getInt("user_count");
+				}
+
+				query = "DELETE FROM `sbd_tp1_43498_45977_47739`.`cliente_atividade`" + " WHERE NifCliente = '"
+						+ userNif + "' and IdAtividade = '" + idAtividade + "' and IdPt = '" + idPt + "';";
 				statement = connection.prepareStatement(query);
 				statement.executeUpdate();
-				
+
 				numeroInscritos--;
-				if(numeroInscritos == maxInscricoes-1) {
+				if (numeroInscritos == maxInscricoes - 1) {
 					query = "UPDATE `sbd_tp1_43498_45977_47739`.`atividade` SET `Estado` = 'InscricoesAbertas' "
 							+ "WHERE (`Id` = '" + idAtividade + "') and (`IdPt` = '" + idPt + "');";
 					statement = connection.prepareStatement(query);
 					statement.executeUpdate();
 				}
-                
-                return true;
-            } catch (SQLException e) {
+
+				return true;
+			} catch (SQLException e) {
 				e.printStackTrace();
 				return false;
 			}
 		}
 	}
-	
+
 	public static String getDayOfWeekString(int dayOfWeek) {
-        switch (dayOfWeek) {
-            case Calendar.SUNDAY:
-                return "Domingo";
-            case Calendar.MONDAY:
-                return "Segunda-Feira";
-            case Calendar.TUESDAY:
-                return "Terça-Feira";
-            case Calendar.WEDNESDAY:
-                return "Quarta-Feira";
-            case Calendar.THURSDAY:
-                return "Quinta-Feira";
-            case Calendar.FRIDAY:
-                return "Sexta-Feira";
-            case Calendar.SATURDAY:
-                return "Sábado";
-            default:
-                return "Invalid day of the week";
-        }
-    }
+		switch (dayOfWeek) {
+		case Calendar.SUNDAY:
+			return "Domingo";
+		case Calendar.MONDAY:
+			return "Segunda-Feira";
+		case Calendar.TUESDAY:
+			return "Terça-Feira";
+		case Calendar.WEDNESDAY:
+			return "Quarta-Feira";
+		case Calendar.THURSDAY:
+			return "Quinta-Feira";
+		case Calendar.FRIDAY:
+			return "Sexta-Feira";
+		case Calendar.SATURDAY:
+			return "Sábado";
+		default:
+			return "Invalid day of the week";
+		}
+	}
 }
