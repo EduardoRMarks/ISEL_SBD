@@ -1,0 +1,20 @@
+<Utilizador>
+    <Tipo>Pt</Tipo>
+    <ID>425</ID>
+    <Nome>Luis Miguel</Nome>
+    <Telemovel>+351 929473923</Telemovel>
+    <Email>luis@monkey.pt</Email>
+    <Password>luis</Password>
+    <Fotografia>https://t4.ftcdn.net/jpg/01/22/69/41/360_F_122694157_jjUIXTkpCHa3usyTZx4RCWDIjQqKsqzS.jpg</Fotografia>
+</Utilizador>
+
+<Utilizador>
+    <Tipo>Cliente</Tipo>
+    <Nif>163048503</Nif>
+    <Nome>Luis Miguel</Nome>
+    <DataDeNascimento>1974-07-15</DataDeNascimento>
+    <Telemovel>+351 929473923</Telemovel>
+    <Email>luis@aol.com</Email>
+    <Password>luis</Password>
+</Utilizador>
+
