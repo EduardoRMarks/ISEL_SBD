@@ -84,7 +84,7 @@ SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 	
 	<form action="XmlServlet" method="post" enctype="multipart/form-data">
 	    <input type="hidden" name="export" value="true">
-	    <label for="exportUserID">Escolha o userID para exportar:</label>
+	    <label for="exportUserID">Escolha o email de utilizador para exportar:</label>
 	    <input type="text" name="UserEmail" required><br>	
 	    <input type="submit" value="Exportar Perfis">
 	</form>

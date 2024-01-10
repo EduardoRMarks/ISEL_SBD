@@ -3,14 +3,32 @@
 <html>
 <head>
     <title>Administrator Dashboard</title>
+    <style>
+        body {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        button {
+            margin-right: 10px;
+        }
+
+        form {
+            margin-bottom: 10px;
+        }
+    </style>
 </head>
 <body>
 
-<button onclick="Logout()">LogOut</button>
+<button onclick="Logout()">Log Out</button>
 
 <h1>Welcome, Administrator!</h1>
 
-<div style="text-align: center; margin-top: 20px;">
+<div>
     <form action="changeClubInfo.jsp">
         <input type="submit" value="Change Club Info">
     </form>
@@ -29,9 +47,9 @@
 </div>
 
 <script>
-function Logout() {
-	window.location.href = "index.jsp";
-}
+    function Logout() {
+        window.location.href = "index.jsp";
+    }
 </script>
 
 </body>
