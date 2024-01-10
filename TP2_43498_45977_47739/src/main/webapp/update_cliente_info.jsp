@@ -17,7 +17,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Update Cliente</title>
 </head>
 <body>
 
@@ -39,7 +39,6 @@
 	
 	cliente = (Cliente) session.getAttribute("user");
 	userEmail = cliente.getUserEmail();
-	//userEmail = "eduardo@aol.com";
 	
 	try {
         connection = DBConnectionManager.getConnection();
@@ -72,13 +71,19 @@
             String userNameForm = request.getParameter("nome");
             String userBirthDateForm = request.getParameter("DataDeNascimento");
             String userSelfPhoneForm = request.getParameter("Telemovel");
+            String userNewPassword = request.getParameter("Password");
+            
             
             if(!userNameForm.equals(userName) || !userBirthDateForm.equals(dateFormat.format(userBirthDate)) 
             		|| !userSelfPhoneForm.equals(userSelfPhone)){
             	
             	updateResult = ClientUtil.changeClientInfo(connection, userNameForm,
             			userBirthDateForm, userSelfPhoneForm, userNIF);
-            }          
+            }
+            
+            if(userNewPassword.length()>0){
+            	ClientUtil.changePassword(connection, userEmail, userNewPassword);
+            }
             
             response.sendRedirect("cliente.jsp");
 
@@ -102,6 +107,9 @@
     	
     	<label for="Telemovel">Telemovel:</label>
     	<input type="text" name="Telemovel" value="<%= userSelfPhone %>" required/><br/>
+    	
+    	<label for="Password">Password:</label>
+    	<input type="password" name="Password"/><br/>
     	
         <input type="submit" value="update"/>
     </form>

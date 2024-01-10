@@ -156,5 +156,12 @@
     }
 %>
 
+<button onclick="goBack()">Voltar</button>
+
+<script>
+function goBack() {
+	window.location.href = "administrador.jsp";
+}
+</script>
 </body>
 </html>

@@ -33,6 +33,8 @@
 </head>
 <body>
 
+<button onclick="goBack()">Voltar</button>
+
 <h1>Weekly Room Occupation</h1>
 
 <%
@@ -159,6 +161,12 @@
         calendar.add(Calendar.DAY_OF_WEEK, 1);
     }
 %>
+
+<script>
+function goBack() {
+	window.location.href = "administrador.jsp";
+}
+</script>
 
 </body>
 </html>

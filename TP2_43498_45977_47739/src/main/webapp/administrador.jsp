@@ -6,6 +6,8 @@
 </head>
 <body>
 
+<button onclick="Logout()">LogOut</button>
+
 <h1>Welcome, Administrator!</h1>
 
 <div style="text-align: center; margin-top: 20px;">
@@ -34,6 +36,12 @@
         <input type="submit" value="See Weekly Room Usage">
     </form>
 </div>
+
+<script>
+function Logout() {
+	window.location.href = "index.jsp";
+}
+</script>
 
 </body>
 </html>

@@ -61,6 +61,8 @@
             DBConnectionManager.close(resultSet, statement, connection);
         }
     }
+
+	session.invalidate();
 %>
 
 <form method="post" action="index.jsp">

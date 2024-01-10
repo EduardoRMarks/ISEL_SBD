@@ -5,6 +5,7 @@ public class Cliente {
     private int NIF;
     private String clienteEmail;
     private UserRole role;
+    private String age;
 
     public Cliente(int NIF, String clienteEmail, UserRole role) {
         this.NIF = NIF;
@@ -29,6 +30,14 @@ public class Cliente {
     
     public String toString() {
 		return role + " com o NIF " + NIF + " e com o email " + clienteEmail ;	
+	}
+    
+    public void setAge(String age) {
+		this.age = age;
+	}
+    
+    public String getAge() {
+		return age;
 	}
     
 }
