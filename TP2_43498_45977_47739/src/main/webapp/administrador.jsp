@@ -10,13 +10,13 @@
 
 <div style="text-align: center; margin-top: 20px;">
     <!-- Button to change work hours of a gym -->
-    <form action="changeWorkHours.jsp">
-        <input type="submit" value="Change Work Hours">
+    <form action="changeClubInfo.jsp">
+        <input type="submit" value="Change Club Info">
     </form>
 
     <!-- Button to configure equipment in a gym -->
-    <form action="configureEquipment.jsp">
-        <input type="submit" value="Configure Equipment">
+    <form action="configureEquipmentAndRooms.jsp">
+        <input type="submit" value="Configure Equipment And Rooms">
     </form>
 
     <!-- Button to create user profiles -->

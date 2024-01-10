@@ -78,4 +78,43 @@ public class DBConnectionManager {
             e.printStackTrace();
         }
     }
+    
+    public static void close2(PreparedStatement statement, Connection connection) {
+
+        try {
+            if (statement != null) {
+                statement.close();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            if (connection != null) {
+                connection.close();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    public static void closeStatement(PreparedStatement statement) {
+    	 try {
+             if (statement != null) {
+                 statement.close();
+             }
+         } catch (SQLException e) {
+             e.printStackTrace();
+         }
+    }
+    
+    public static void closeResultSet(ResultSet resultSet) {
+   	 try {
+            if (resultSet != null) {
+            	resultSet.close();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+   }
 }
