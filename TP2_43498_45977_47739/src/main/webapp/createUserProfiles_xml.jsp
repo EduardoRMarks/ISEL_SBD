@@ -75,7 +75,7 @@ SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         %>
     </table>
 
-	<h2>Importar/Exportar Perfis via XML</h2>
+	<h2>Importar/Exportar Perfis com XML</h2>
 	<form action="XmlServlet" method="post" enctype="multipart/form-data">
 	    <label for="xmlFile">Escolha um ficheiro XML:</label>
 	    <input type="file" name="xmlFile" accept=".xml" required><br>
