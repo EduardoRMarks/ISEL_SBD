@@ -103,88 +103,63 @@ Connection connection = null;
 <div>
     <h1>Pagina dos clientes do o PT <%= nomePt %> com ID <%= idPT %></h1>
     <hr>
-    <%
-    if(listaClientesFinal.size() == 0){
-    	%><h2>Este PT não tem quaisquer clientes.</h2><%
-    }
-    else{
-       	%>
-
-		<div class="container">
-		    <h2>Clientes:</h2>
-		    <%
-		    for(int i = 0; i < listaNifClientesFinal.size(); i++) {
-		    	int equipIndex = 0;
-		        %>
-		        <div>
+    <% if (listaClientesFinal.size() == 0) { %>
+        <h2>Este PT não tem quaisquer clientes.</h2>
+    <% } else { %>
+        <div class="container">
+            <h2>Clientes:</h2>
+            <%-- User Loop --%>
+			<% for (int i = 0; i < listaClientesFinal.size(); i++) { %>
+			    <div>
+			    	
 			        <h3><%= listaClientesFinal.get(i) %> - NIF: <%= listaNifClientesFinal.get(i) %></h3>
 			        <form action="" method="post">
-			
-			            <!-- Dropdown for equipment selection -->
+			            <!-- Dropdown for equipment selection for this user -->
 			            <label for="equipamento_<%= i %>">Selecionar Equipamento:</label>
 			            <select id="equipamento_<%= i %>" name="equipamento_<%= i %>">
-							<%
-							for (int j = 0; j < equipamentosIdDisponiveisFinal.size(); j++) {
-							    String equipmentId = equipamentosIdDisponiveisFinal.get(j);
-							    String equipmentName = equipamentosDisponiveisFinal.get(j);
-							    String selected = "";
-							    if (equipmentId.equals(idEquipamento)) {
-							        selected = "selected";
-							    }
-							%>
-							<option value="<%= equipmentId %>" <%= selected %>><%= equipmentName %></option>
-							<%
-							}
-							%>
+			                <% for (int j = 0; j < equipamentosIdDisponiveisFinal.size(); j++) { %>
+			                    <% String equipmentId = equipamentosIdDisponiveisFinal.get(j);
+			                       String equipmentName = equipamentosDisponiveisFinal.get(j);
+			                       String selected = "";
+			                       if (equipmentId.equals(idEquipamento)) {
+			                           selected = "selected";
+			                       }
+			                    %>
+			                    <option value="<%= equipmentId %>" <%= selected %>><%= equipmentName %></option>
+			                <% } %>
 			            </select><br>
-			
+			            
+			            <br>
 			            <!-- Input for date selection -->
 			            <label for="data_<%= i %>">Escolher Data:</label>
 			            <input type="date" id="data_<%= i %>" name="data_<%= i %>"><br>
-			
-						<script>
-						    function convertDateToString(index) {
-						        var selectedDate = document.getElementById("data_" + index).value;
-						        // You can use 'selectedDate' as needed, such as sending it to the server or performing further actions
-						    }
-						</script>
-			
-		                <!-- Dropdown for binary choice -->
-		                <label for="choice_<%= i %>">Uso:</label>
-		                <select id="choice_<%= i %>" name="choice_<%= i %>">
-		                    <option value="1">Sim</option>
-		                    <option value="0">Não</option>
-		                </select><br>
-			
-						<script>
-						    function getDropdownValue(index) {
-						        var dropdown = document.getElementById("choice_" + index);
-						        var selectedValue = dropdown.value;
-						    }
-						</script>
-
-						<br>
-			
-						               <!-- Button to trigger the redirection -->
-                <div class="container">
-                
-                    <!-- Pass necessary Java variables to JavaScript function -->
-					<button type="button" onclick="redirectToPageRecomendacao(
-					    '<%= idPT %>',
-					    '<%= listaNifClientesFinal.get(i) %>',
-						'<%= equipamentosIdDisponiveisFinal.get(equipIndex) %>',
-						'<%= i %>'
-					)">Fazer Recomendacao</button>
-                </div>
-            </form>
+			            
+			            <br>
+			            <!-- Dropdown for binary choice -->
+			            <label for="choice_<%= i %>">Uso:</label>
+			            <select id="choice_<%= i %>" name="choice_<%= i %>">
+			                <option value="1">Sim</option>
+			                <option value="0">Não</option>
+			            </select><br>
+			            
+			            <!-- Button to trigger the redirection -->
+			            
+			            <br>
+			            <div class="container">
+			                <!-- Pass necessary Java variables to JavaScript function -->
+			                <button type="button" onclick="redirectToPageRecomendacao(
+			                        '<%= idPT %>',
+			                        '<%= listaNifClientesFinal.get(i) %>',
+			                        '<%= i %>'
+			                    )">Fazer Recomendacao</button>
+			            </div>
+			        </form>
+			    </div>
+			<% } %>
         </div>
-        <%
-    }
-    %>
+    <% } %>
 </div>
-<%
-}
-%>
+
 
 <!-- JavaScript section -->
 <script>

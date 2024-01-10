@@ -65,11 +65,18 @@
     <button onclick="redirectToPage('buscarClientePage.jsp')" style="display: block; margin-bottom: 10px;">Procurar Cliente</button>
     
     <button onclick="redirectToPage('recomendarClientesPage.jsp')" style="display: block; margin-bottom: 10px;">Recomendar Clientes</button>
+    
+    <button onclick="logout()" style="display: block; margin-bottom: 10px;">Log out</button>
 
     <script>
         function redirectToPage(escolha) {
             window.location.href = encodeURIComponent(escolha);
         }
+        
+        function logout() {
+          window.location.href = "index.jsp";
+        }
+
     </script>
     
 </div>

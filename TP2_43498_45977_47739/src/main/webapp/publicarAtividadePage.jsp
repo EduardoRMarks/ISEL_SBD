@@ -49,14 +49,17 @@
 
     boolean confirmacaoAtividade;
     
+    System.out.println("DATA1 : " +data);
+    
     if (data.equals("")) data = null;
     else if (diaDeSemana.equals("")) diaDeSemana = null;
     
-    if (confirmacao.equals("1"))
-    	confirmacaoAtividade = true;
-    else {
-    	confirmacaoAtividade = false;
-    }
+    System.out.println("DATA2 : " + data);
+    
+    if (confirmacao.equals("1")) confirmacaoAtividade = true;
+    else { confirmacaoAtividade = false; }
+    
+    System.out.println("DATA2 : " + data);
     
     try {
     	connection = DBConnectionManager.getConnection();
@@ -98,7 +101,7 @@
 
 	<br>
 
-	<button onclick="goBack('novaAtividadePage.jsp.jsp')">Voltar</button>
+	<button onclick="goBack('novaAtividadePage.jsp')">Voltar</button>
 	
 	<script>
 	    function goBack(escolha) {

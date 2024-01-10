@@ -147,9 +147,10 @@
 				Etário:</label> <select id="escalaoEtario" name="escalaoEtario" required>
 				<option value="18-30">18-30</option>
 				<option value="31-45">31-45</option>
-				<option value="46-69">46-69</option>
+				<option value="46-55">46-55</option>
+				<option value="56-70">56-70</option>
 				<option value="70+">70+</option>
-				<option value="todos">Todos</option>
+				<option value="Todos">Todos</option>
 			</select><br> 
 			<br> 
 			<label for="nifClube">Clube:</label>
@@ -164,6 +165,11 @@
 			<br>
 
 			<button onclick="redirectToPagePublicarAtividade(event)">Publicar nova atividade</button>
+
+			<br>
+			<br>
+					
+			<button onclick="goBack('manchasDeDisponibilidade.jsp')">Voltar</button>
 
 		</form>
 	</div>
@@ -233,6 +239,13 @@
 		        document.getElementById('pontualFields').style.display = 'block';
 		    }
 		}
+		
+
+	    function goBack(escolha) {
+			event.preventDefault();
+	    	window.location.href = encodeURIComponent(escolha);
+	    }
+
 		
 	</script>
 
