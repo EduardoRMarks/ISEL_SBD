@@ -40,18 +40,34 @@ public class ClientUtil {
 
 	public static List<String> getPatologiasOrObjetivos(Connection connection, String query) throws SQLException {
 		
-		System.out.println("QUERY: " + query);
+		//System.out.println("QUERY: " + query);
 		
 		statement = connection.prepareStatement(query);
 		resultSet = statement.executeQuery();
 		List<String> patologiaStrings = new ArrayList<String>();
 
 		while (resultSet.next()) {
-			System.out.println("NOME PATOLOGIA/OBJETIVO : " + resultSet.getString("Nome"));
+			//System.out.println("NOME PATOLOGIA/OBJETIVO : " + resultSet.getString("Nome"));
 			patologiaStrings.add(resultSet.getString("Nome"));
 		}
 
 		return patologiaStrings;
+	}
+	
+	public static List<String> getRecomendacoes(Connection connection, String query) throws SQLException {
+		
+		statement = connection.prepareStatement(query);
+		resultSet = statement.executeQuery();
+		List<String> recomendacaoStrings = new ArrayList<String>();
+
+		while (resultSet.next()) {
+			recomendacaoStrings.add(resultSet.getString("IdPt"));
+			recomendacaoStrings.add(resultSet.getString("IdEquipamento"));
+			recomendacaoStrings.add(resultSet.getString("Data"));
+			recomendacaoStrings.add(resultSet.getString("Uso"));
+		}
+
+		return recomendacaoStrings;
 	}
 	
 	public static boolean addOrDelete(Connection connection, String which_table, String action, String patologia_objetivo, String nif){

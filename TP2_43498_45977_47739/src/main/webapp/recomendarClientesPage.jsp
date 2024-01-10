@@ -21,7 +21,7 @@
 <body>
 
 <%
-    Connection connection = null;
+Connection connection = null;
     PreparedStatement statement = null;
     ResultSet resultSet = null;
     Cliente cliente = null;
@@ -68,9 +68,8 @@
         
         for (String s : listaNifClientes) {
         	String queryClientes = "SELECT * FROM sbd_tp1_43498_45977_47739.cliente WHERE Nif = '" + s + "'";
-        	listaClientes.add(PtUtil.getNomeCliente(connection, queryClientes));
+        	listaClientes.add(PtUtil.getNome(connection, queryClientes));
         }
-        
 
         Set<String> setWithoutDuplicates = new LinkedHashSet<>(listaClientes);
         listaClientesFinal = new ArrayList<>(setWithoutDuplicates);
@@ -99,7 +98,6 @@
     } finally {
         DBConnectionManager.close(resultSet, statement, connection);
     }
-
 %>
 
 <div>
@@ -191,6 +189,7 @@
 <!-- JavaScript section -->
 <script>
 	function redirectToPageRecomendacao(idPT, nifCliente, index) {
+		
 	    var selectedDate = document.getElementById("data_" + index).value;
 	    var dropdownValue = document.getElementById("choice_" + index).value;
 	    var equipmentDropdown = document.getElementById("equipamento_" + index);

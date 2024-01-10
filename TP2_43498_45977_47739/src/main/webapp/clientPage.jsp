@@ -22,6 +22,7 @@
     </style>
 </head>
 <body>
+
 <%
     Connection connection = null;
     PreparedStatement statement = null;
@@ -36,6 +37,8 @@
 
    	List<String> listaPatologias = new ArrayList<String>();
 	List<String> listaObjetivos = new ArrayList<String>();
+	List<String> listaRecomendacoes = new ArrayList<String>();
+	ArrayList<String> recomendacoesFinais = new ArrayList<String>();
     
     String clientName = request.getParameter("clientName");
 
@@ -95,15 +98,47 @@
         listaPatologias = ClientUtil.getPatologiasOrObjetivos(connection, query);
         ArrayList<String> patologias = new ArrayList<>(listaPatologias);
         
-        System.out.println("Patologias: " + patologias);
-        
         // Objetivos
         query = "SELECT * FROM sbd_tp1_43498_45977_47739.objetivo WHERE NifCliente = '" + userNIF + "'";
         listaObjetivos = ClientUtil.getPatologiasOrObjetivos(connection, query);
         ArrayList<String> objetivos = new ArrayList<>(listaObjetivos);
         
-        for (String o : objetivos)
-        	System.out.println("Objetivos: " + o);
+        // Recomendacoes
+        query = "SELECT IdPt, IdEquipamento, Data, Uso FROM sbd_tp1_43498_45977_47739.pt_cliente_equipamento WHERE NifCliente = '" + userNIF + "'";
+        listaRecomendacoes = ClientUtil.getRecomendacoes(connection, query);
+        ArrayList<String> recomendacoes = new ArrayList<>(listaRecomendacoes);
+
+        while (!recomendacoes.isEmpty()) {
+            int endIndex = Math.min(recomendacoes.size(), 4);
+            List<String> selectedElements = recomendacoes.subList(0, endIndex);
+
+            if (selectedElements.size() >= 4) {
+                if (selectedElements.get(3).equals("0")) {
+                    selectedElements.set(3, "não deve");
+                } else {
+                    selectedElements.set(3, "deve");
+                }
+
+                String recommendation = "Recomendacao feita pelo PT com id " + selectedElements.get(0)
+                        + ": O cliente " + selectedElements.get(3) 
+                        + " usar o equipamento de ID " + selectedElements.get(1)
+                        + " até à data " + selectedElements.get(2) + ".";
+
+                recomendacoesFinais.add(recommendation);
+
+                // Remove the first 4 elements from the original list
+                recomendacoes.subList(0, endIndex).clear();
+            } else {
+                System.out.println("Insufficient elements in the list.");
+                break;
+            }
+        }
+
+        // Print or use the final list of recommendations
+        for (String s : recomendacoesFinais) {
+            System.out.println(s);
+        }
+        
         
 	} catch (Exception e) {
         e.printStackTrace();
@@ -116,40 +151,57 @@
 <div>
     <h1>Pagina do cliente <%= userName %></h1>
     <hr>
-    <%
-    if(listaObjetivos.size() == 0){
-    	%><h2>Atualmente não tem nenhum objetivo definido.</h2><%
-    }
-    else{
-    	for(String o: listaObjetivos) {
-        	%>
-
-			<div class="container">
-				<h2>Objetivos: </h2>
-			    <h3><%= o %></h3>
-			</div>
-        	<%
-		}
-    }  
     
-    if(listaPatologias.size() == 0){
-    	%><h2>Atualmente não tem nenhuma patologia adicionada.</h2><%
-    }
-    else{
-    	for(String p: listaPatologias) {
-        	%>
-
-			<div class="container">
-				<h2>Patologias: </h2>
-			    <h3><%= p %></h3>
-			  
-			</div>
-        	<%
-		}
-    }   
-    %>
+    <!-- Display Objectives -->
+    <% if (listaObjetivos.size() > 0) { %>
+        <div class="container">
+            <h2>Objetivos: </h2>
+            <% for (String o : listaObjetivos) { %>
+                <h3><%= o %></h3>
+            <% } %>
+        </div>
+    <% } else { %>
+        <h2>Atualmente não tem nenhum objetivo definido.</h2>
+    <% } %>
+    
+    <!-- Display Patologias -->
+    <% if (listaPatologias.size() > 0) { %>
+        <div class="container">
+            <h2>Patologias: </h2>
+            <% for (String p : listaPatologias) { %>
+                <h3><%= p %></h3>
+            <% } %>
+        </div>
+    <% } else { %>
+        <h2>Atualmente não tem nenhuma patologia adicionada.</h2>
+    <% } %>
+    
+    <!-- Display Recomendacoes -->
+    <% if (recomendacoesFinais.size() > 0) { %>
+        <div class="container">
+            <h2>Recomendacoes: </h2>
+            <% for (String p : recomendacoesFinais) { %>
+                <h3><%= p %></h3>
+            <% } %>
+        </div>
+    <% } else { %>
+        <h2>Atualmente não tem nenhuma recomendacao adicionada.</h2>
+    <% } %>
+    
     <!-- ... other HTML content -->
 </div>
+
+	<hr>
+	<br>
+
+	<button onclick="goBack('buscarClientePage.jsp')">Voltar</button>
+	
+	<script>
+	    function goBack(escolha) {
+	    	window.location.href = encodeURIComponent(escolha);
+	    }
+    </script>
+
 
 </body>
 </html>

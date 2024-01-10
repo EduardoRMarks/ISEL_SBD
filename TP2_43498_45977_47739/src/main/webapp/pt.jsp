@@ -55,18 +55,21 @@
 %>
 
 <div>
+    <h1><%= user.toString() %></h1>
+    <h3>Bem vindo, <%= ptName %></h3>
 
-	<h1><%= user.toString() %></h1>
-	<h3>Bem vindo, <%= ptName %></h3>
-	<button onclick="redirectToPage('publicarManchaDisponibilidadePage.jsp')">Publicas manchas de disponibilidade</button>
-	<button onclick="redirectToPage('confirmarCancelarAtividadesPage.jsp')">Confirmar / Cancelar atividades</button>
-	<button onclick="redirectToPage('buscarClientePage.jsp')">Procurar Cliente</button>
-	<button onclick="redirectToPage('agendarParticipacaoClientePage.jsp')">Agendar participação Cliente</button>
-	<button onclick="redirectToPage('recomendarClientesPage.jsp')">Recomendar Clientes</button>
+    <button onclick="redirectToPage('manchasDeDisponibilidade.jsp')" style="display: block; margin-bottom: 10px;">Manchas de disponibilidade</button>
+    
+    <button onclick="redirectToPage('agendarParticipacaoClientePage.jsp')" style="display: block; margin-bottom: 10px;">Agendar participação Cliente</button>
+    
+    <button onclick="redirectToPage('buscarClientePage.jsp')" style="display: block; margin-bottom: 10px;">Procurar Cliente</button>
+    
+    <button onclick="redirectToPage('recomendarClientesPage.jsp')" style="display: block; margin-bottom: 10px;">Recomendar Clientes</button>
 
-	<script>
-	    function redirectToPage(escolha) {
-	    	window.location.href = encodeURIComponent(escolha); }
+    <script>
+        function redirectToPage(escolha) {
+            window.location.href = encodeURIComponent(escolha);
+        }
     </script>
     
 </div>
