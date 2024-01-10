@@ -1,3 +1,5 @@
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.util.Date"%>
 <%@page import="java.io.Console"%>
 <%@page import="util.DBConnectionManager"%>
 <%@page import="util.PasswordUtil" %>
@@ -16,6 +18,12 @@
 <body>
 
 <%
+
+	Date currentDate = new Date();
+	
+	// Format the date as needed
+	SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+	String formattedDate = dateFormat.format(currentDate);
     if ("POST".equalsIgnoreCase(request.getMethod())) {
     	
         String username = request.getParameter("username");
@@ -65,15 +73,21 @@
 	session.invalidate();
 %>
 
-<form method="post" action="index.jsp">
-    <label for="username">Username:</label>
-    <input type="text" name="username" required/><br/>
-
-    <label for="password">Password:</label>
-    <input type="password" name="password" required/><br/>
-
-    <input type="submit" value="Login"/>
-</form>
+<div>
+	<h1>Bem vindo à aplicação do ginásio Monkey Health Club</h1>
+	
+	<h3>Data de hoje: <%=formattedDate %></h3>
+	
+	<form method="post" action="index.jsp">
+	    <label for="username">Username:</label>
+	    <input type="text" name="username" required/><br/>
+	
+	    <label for="password">Password:</label>
+	    <input type="password" name="password" required/><br/>
+	
+	    <input type="submit" value="Login"/>
+	</form>
+</div>
 
 </body>
 </html>

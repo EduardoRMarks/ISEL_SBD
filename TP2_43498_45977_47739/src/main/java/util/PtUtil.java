@@ -33,9 +33,7 @@ public class PtUtil {
 			resultSet = statement.executeQuery();
 
 			while (resultSet.next()) {
-				// System.out.println();
 				clientesStrings.add(resultSet.getString("Nome"));
-				// System.out.println(clientesStrings);
 			}
 		} finally {
 

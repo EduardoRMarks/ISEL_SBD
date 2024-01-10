@@ -10,7 +10,6 @@
 <html>
 <head>
     <title>Configure Equipment and Rooms</title>
-    <!-- Include necessary styles/scripts -->
 </head>
 <body>
 
@@ -41,10 +40,8 @@
         List<Room> roomList = RoomUtil.getRoomList(selectedClub);
 %>
 
-    <!-- Display equipment information -->
     <h2>Equipment</h2>
     <table>
-        <!-- Table headers -->
         <tr>
             <th>ID</th>
             <th>Name</th>
@@ -54,7 +51,6 @@
             <th>Action</th>
         </tr>
 
-        <!-- Display equipment data -->
         <% for (Equipment equipment : equipmentList) { %>
             <tr>
                 <td><%= equipment.getId() %></td>
@@ -63,7 +59,6 @@
                 <td><%= equipment.getEstado() == 1 ? "Active" : "Inactive" %></td>
                 <td><img src="data:image/png;base64,<%= equipment.getImagem() %>" alt="Equipment Image"/></td>
                 <td>
-                    <!-- Add update and delete buttons with appropriate URLs -->
                     <a href="updateEquipment.jsp?equipmentId=<%= equipment.getId() %>">Update</a>
                     <a href="deleteEquipment.jsp?equipmentId=<%= equipment.getId() %>">Delete</a>
                 </td>
@@ -71,10 +66,8 @@
         <% } %>
     </table>
 
-    <!-- Display room information -->
     <h2>Rooms</h2>
     <table>
-        <!-- Table headers -->
         <tr>
             <th>ID</th>
             <th>Name</th>
@@ -84,7 +77,6 @@
             <th>Action</th>
         </tr>
 
-        <!-- Display room data -->
         <% for (Room room : roomList) { %>
             <tr>
                 <td><%= room.getId() %></td>
@@ -101,13 +93,11 @@
         <% } %>
     </table>
 
-    <!-- Add Equipment Button -->
     <form method="get" action="addEquipment.jsp">
         <input type="hidden" name="selectedClub" value="<%= selectedClub %>"/>
         <input type="submit" value="Add Equipment"/>
     </form>
-
-    <!-- Add Room Button -->
+    
     <form method="get" action="addRoom.jsp">
         <input type="hidden" name="selectedClub" value="<%= selectedClub %>"/>
         <input type="submit" value="Add Room"/>

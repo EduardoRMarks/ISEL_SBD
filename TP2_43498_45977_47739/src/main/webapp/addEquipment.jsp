@@ -63,7 +63,6 @@
     //}
 %>
 
-<!-- HTML form for user inputs -->
 <form action="addEquipment.jsp" method="get" enctype="multipart/form-data">
 
     <label for="equipmentName">Equipment Name:</label>
@@ -74,13 +73,10 @@
 
     <label for="equipmentStatus">Equipment Status (0 or 1):</label>
     <input type="number" name="equipmentStatus" min="0" max="1" required><br>
-
-    <!-- Remove the file input for image -->
-
+    
     <input type="submit" value="Submit">
 </form>
 
-<!-- Include a link to go back to the main configuration page -->
 <a href="configureEquipmentAndRooms.jsp">Back to Configuration</a>
 
 </body>

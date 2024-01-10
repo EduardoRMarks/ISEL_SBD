@@ -9,8 +9,6 @@ public class Equipment {
 	private int estado;
 	private String imagem;
 
-	// Constructors, getters, and setters
-
 	public Equipment() {
 	}
 

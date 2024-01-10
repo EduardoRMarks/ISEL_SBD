@@ -9,8 +9,6 @@ public class Room {
 	private int estado;
 	private String imagem;
 
-	// Constructors, getters, and setters
-
 	public Room() {
 	}
 

@@ -30,7 +30,7 @@ public class PasswordUtil {
 
 			return Base64.getEncoder().encodeToString(combined);
 		} catch (NoSuchAlgorithmException | InvalidKeySpecException e) {
-			e.printStackTrace(); // TODO handle exception
+			e.printStackTrace();
 			return null;
 		}
 	}
@@ -55,7 +55,7 @@ public class PasswordUtil {
 
 			return diff == 0;
 		} catch (NoSuchAlgorithmException | InvalidKeySpecException e) {
-			e.printStackTrace(); // TODO handle exception for null password and null hash
+			e.printStackTrace();
 			return false;
 		}
 	}

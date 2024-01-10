@@ -29,5 +29,4 @@
     }
 %>
 
-<!-- Back button -->
 <a href="configureEquipmentAndRooms.jsp">Back to Configuration</a>

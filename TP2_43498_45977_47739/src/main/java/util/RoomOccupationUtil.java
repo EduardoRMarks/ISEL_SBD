@@ -12,7 +12,6 @@ import java.util.Locale;
 
 public class RoomOccupationUtil {
 
-	// This method retrieves room occupation data for a given date range
 	public static List<OccupationData> getOccupationData(Date startDate, Date endDate) {
 		List<OccupationData> occupationDataList = new ArrayList<>();
 		Connection connection = null;
@@ -21,8 +20,6 @@ public class RoomOccupationUtil {
 
 		try {
 			connection = DBConnectionManager.getConnection();
-			// Assuming you have a table "sala" for rooms and "atividade_sala" for room
-			// occupation
 			String query = "SELECT sala.Id, clube.DesignacaoComercial, sala.Nome, atividade.IdPt, pt.Nome as PTNOME, atividade.Data, atividade.Estado, atividade.DiaDeSemana, atividade.HoraDeInicio, atividade.Duracao "
 					+ "FROM sala " + "LEFT JOIN atividade_sala ON sala.ID = atividade_sala.IdSala "
 					+ "LEFT JOIN atividade ON atividade_sala.IdAtividade = atividade.ID "
@@ -49,7 +46,6 @@ public class RoomOccupationUtil {
 				OccupationData occupationData = new OccupationData(roomId, clubName, roomName, state, ptNome, dayOfWeek,
 						hour, idPt, duration);
 
-				// Populate the occupation data for each day in the date range
 				Calendar calendar = Calendar.getInstance();
 				calendar.setTime(startDate);
 				while (!calendar.getTime().after(endDate)) {
@@ -77,14 +73,12 @@ public class RoomOccupationUtil {
 		String[] portugueseDaysOfWeek = { "Domingo", "Segunda-feira", "Terça-feira", "Quarta-feira", "Quinta-feira",
 				"Sexta-feira", "Sábado" };
 
-		// Get the day name in Portuguese directly
 		String portugueseDayOfWeek = getPortugueseDayOfWeek(currentDate);
 
 		return portugueseDayOfWeek.equalsIgnoreCase(dayOfWeek);
 	}
 
 	private static String getPortugueseDayOfWeek(Date currentDate) {
-		// Use SimpleDateFormat to get the day name in Portuguese
 		SimpleDateFormat dateFormat = new SimpleDateFormat("EEEE", new Locale("pt", "BR"));
 		return dateFormat.format(currentDate);
 	}
@@ -95,8 +89,7 @@ public class RoomOccupationUtil {
 
 		try {
 			connection = DBConnectionManager.getConnection();
-			// Assuming you have a table "sala" for rooms and "atividade_sala" for room
-			// occupation
+		
 			String query = "SELECT sala.Id, clube.DesignacaoComercial, sala.Nome, atividade.IdPt, pt.Nome as ptNome, atividade.Data, atividade.Estado, atividade.DiaDeSemana, atividade.HoraDeInicio, atividade.Duracao "
 					+ "FROM sala " + "LEFT JOIN atividade_sala ON sala.ID = atividade_sala.IdSala "
 					+ "LEFT JOIN atividade ON atividade_sala.IdAtividade = atividade.ID "
@@ -125,7 +118,6 @@ public class RoomOccupationUtil {
 						OccupationData occupationData = new OccupationData(roomId, clubName, roomName, state, ptNome,
 								dayOfWeek, hour, idPt, duration);
 
-						// Populate the occupation data for each day in the date range
 						Calendar calendar = Calendar.getInstance();
 						calendar.setTime(startDate);
 						while (!calendar.getTime().after(endDate)) {
@@ -152,7 +144,6 @@ public class RoomOccupationUtil {
 		return occupationDataList;
 	}
 
-	// This inner class represents room occupation data
 	public static class OccupationData {
 		private int roomId;
 		private String clubName;

@@ -8,7 +8,6 @@ import java.util.List;
 
 public class ClubUtil {
 
-	// This method retrieves the list of club names
 	public static List<String> getClubList() {
 		List<String> clubList = new ArrayList<>();
 		Connection connection = null;
@@ -17,7 +16,6 @@ public class ClubUtil {
 
 		try {
 			connection = DBConnectionManager.getConnection();
-			// Assuming you have a table "clube" for clubs
 			String query = "SELECT DesignacaoComercial FROM clube";
 
 			statement = connection.prepareStatement(query);
