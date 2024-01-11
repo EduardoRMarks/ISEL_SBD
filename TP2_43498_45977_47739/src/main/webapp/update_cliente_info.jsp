@@ -21,6 +21,8 @@
 </head>
 <body>
 
+<h2>Atualização da informação</h2>
+
 <%
 	SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 
