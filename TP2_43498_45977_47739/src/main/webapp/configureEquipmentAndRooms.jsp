@@ -35,7 +35,7 @@
 	session.setAttribute("nifClub", nif);
 	club = selectedClub;
     if (selectedClub != null && !selectedClub.isEmpty()) {
-        // Retrieve equipment and rooms for the selected club
+
         List<Equipment> equipmentList = EquipmentUtil.getEquipmentList(selectedClub);
         List<Room> roomList = RoomUtil.getRoomList(selectedClub);
 %>
@@ -85,7 +85,6 @@
                 <td><%= room.getEstado() == 1 ? "Active" : "Inactive" %></td>
                 <td><img src="data:image/png;base64,<%= room.getImagem() %>" alt="Room Image"/></td>
                 <td>
-                    <!-- Add update and delete buttons with appropriate URLs -->
                     <a href="updateRoom.jsp?roomId=<%= room.getId() %>">Update</a>
                     <a href="deleteRoom.jsp?roomId=<%= room.getId() %>">Delete</a>
                 </td>

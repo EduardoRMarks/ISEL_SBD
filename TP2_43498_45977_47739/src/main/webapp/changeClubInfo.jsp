@@ -48,7 +48,7 @@
                     connection = DBConnectionManager.getConnection();
                     String updateScheduleQuery = "UPDATE horario SET HoraAbertura = ?, HoraFecho = ? WHERE NifClube = ? AND DiaDeSemana = ?";
                     try (PreparedStatement updateScheduleStatement = connection.prepareStatement(updateScheduleQuery)) {
-                        // Use Nif from clube table instead of selectedClub
+
                         int clubeNif = ClubUtil.getClubNif(selectedClub);
                         updateScheduleStatement.setString(1, openingTime);
                         updateScheduleStatement.setString(2, closingTime);
@@ -86,7 +86,7 @@
 <%
     String selectedClub = request.getParameter("selectedClub");
     if (selectedClub != null && !selectedClub.isEmpty()) {
-        // Retrieve and display current information for the selected club
+
         try {
             connection = DBConnectionManager.getConnection();
             String query = "SELECT * FROM clube WHERE DesignacaoComercial = ?";
@@ -103,8 +103,6 @@
     <input type="hidden" name="selectedClub" value="<%=selectedClub%>"/>
     <label for="newPhoneNumber">New Phone Number:</label>
     <input type="text" name="newPhoneNumber" value="<%=resultSet.getString("Telefone")%>"/><br/>
-
-    <!-- Add fields for other information you want to change -->
 
     <input type="submit" value="Update"/>
 </form>

@@ -28,11 +28,7 @@
     	
         String username = request.getParameter("username");
         String enteredPassword = request.getParameter("password");
-
-        //Para debug
-        //System.out.println("Username: " + username);
-        //System.out.println("Password: " + enteredPassword);
-
+        
         Connection connection = null;
         PreparedStatement statement = null;
         ResultSet resultSet = null;

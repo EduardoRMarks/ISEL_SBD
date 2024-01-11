@@ -38,38 +38,34 @@
 <h1>Weekly Room Occupation</h1>
 
 <%
-    // Initialize variables
+
     Calendar calendar = Calendar.getInstance();
     SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 
-    // Check if a specific week is requested
     String action = request.getParameter("action");
 
-    // Retrieve or initialize the start date of the week from the session
     Date startDate = (Date) session.getAttribute("startDate");
     if (startDate == null || "filter".equals(action)) {
-        // If not in session or filter action, set the start date to the current week's start date
+
         calendar.set(Calendar.DAY_OF_WEEK, Calendar.SUNDAY);
         startDate = calendar.getTime();
         session.setAttribute("startDate", startDate);
     }
 
-    // Adjust the start date based on the button pressed
     if ("previous".equals(action)) {
-        // Move to the previous week
+
         calendar.setTime(startDate);
         calendar.add(Calendar.WEEK_OF_YEAR, -1);
         startDate = calendar.getTime();
         session.setAttribute("startDate", startDate);
     } else if ("next".equals(action)) {
-        // Move to the next week
+
         calendar.setTime(startDate);
         calendar.add(Calendar.WEEK_OF_YEAR, 1);
         startDate = calendar.getTime();
         session.setAttribute("startDate", startDate);
     }
 
-    // Calculate the end date of the week
     calendar.setTime(startDate);
     calendar.add(Calendar.DAY_OF_WEEK, 6);
     Date endDate = calendar.getTime();
@@ -82,7 +78,6 @@
         occupationDataList = RoomOccupationUtil.getOccupationData(startDate, endDate);
     }
 
-    // Get the list of clubs for the dropdown
     List<String> clubList = ClubUtil.getClubList();
 %>
 
@@ -112,7 +107,6 @@
 <h2>Week starting from <%= dateFormat.format(startDate) %></h2>
 
 <%
-    // Iterate through the dates
     calendar.setTime(startDate);
     while (!calendar.getTime().after(endDate)) {
         Date currentDate = calendar.getTime();
@@ -132,11 +126,9 @@
                 <th>Duration</th>
             </tr>
 
-            <!-- Iterate over room occupation data and display rows for the current date -->
             <%
                 for (RoomOccupationUtil.OccupationData occupationData : occupationDataList) {
-                	
-                    // Check if the room is occupied on the current date
+
                     boolean isOccupied = occupationData.isRoomOccupied(currentDate);
                     if (isOccupied) {
                 %>
@@ -157,7 +149,6 @@
         </table>
 
 <%
-        // Move to the next date
         calendar.add(Calendar.DAY_OF_WEEK, 1);
     }
 %>

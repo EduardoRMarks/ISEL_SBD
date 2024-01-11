@@ -33,7 +33,6 @@
     Date userBirthDate = null;
     String userSelfPhone = null;
     String userEmail = null;
-    // ... other variables
 
    	List<String> listaPatologias = new ArrayList<String>();
 	List<String> listaObjetivos = new ArrayList<String>();
@@ -50,21 +49,15 @@
             preparedStatement.setString(1, clientName);
             resultSet = preparedStatement.executeQuery();
 
-            // Process the resultSet as needed
             if (resultSet.next()) {
                 userNIF = String.valueOf(resultSet.getInt("NIF"));
                 userName = resultSet.getString("Nome");
-                // ... retrieve other values
             }
         } catch (SQLException e) {
-            // Handle exceptions
             e.printStackTrace();
         } finally {
-            // Close resources
             DBConnectionManager.close(resultSet, statement, connection);
         }
-    } else {
-        // Handle the case where clientName is not provided
     }
 
     try {
@@ -80,13 +73,6 @@
         userSelfPhone = resultSet.getString("Telemovel");
         userEmail = resultSet.getString("Email");
         
-        /*
-        System.out.println("NIF: " + userNIF);
-        System.out.println("Nome: " + userName);
-        System.out.println("Nasc: " + userBirthDate);
-        System.out.println("Numero: " + userSelfPhone);
-        System.out.println("Email: " + userEmail);
-        */
         
         cliente = new Cliente(resultSet.getInt("NIF"), userEmail, UserRole.CLIENT);
         session.setAttribute("user", cliente);
@@ -133,12 +119,6 @@
                 break;
             }
         }
-
-        // Print or use the final list of recommendations
-        for (String s : recomendacoesFinais) {
-            System.out.println(s);
-        }
-        
         
 	} catch (Exception e) {
         e.printStackTrace();

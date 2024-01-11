@@ -38,22 +38,12 @@
     String action = request.getParameter("action");
     
     boolean usoSQL;
-    
-    System.out.println("\nid: " +idPt);
-    System.out.println("nifCliente: " +nifCliente);
-    System.out.println("idEquip: " +idEquipamento);
-    System.out.println("nifClube: " +nifClube);
-    System.out.println("data: " + data);
-    System.out.println("Uso: " + uso +"testeasdas");
-    System.out.println("action" + action);
-    
+
     if (uso.equals("1"))
     	usoSQL = true;
     else {
     	usoSQL = false;
     }
-    
-    System.out.println("USO SQL" + usoSQL);
     
     try {
     	connection = DBConnectionManager.getConnection();
@@ -61,9 +51,7 @@
     	String query = "INSERT INTO sbd_tp1_43498_45977_47739.pt_cliente_equipamento (`IdPt`, `NifCliente`, `IdEquipamento`, `NifClube`, `Data`, `Uso`)" 
     	+ " VALUES ('" + idPt + "', '" + nifCliente + "', '" + idEquipamento + "', '" + nifClube + "', '" + data + "', '" + usoSQL + "');";
         
-        System.out.println("ENTREI");
         success = PtUtil.addRecomendacao(connection, idPt, nifCliente, idEquipamento, nifClube, data, usoSQL);
-        System.out.println("SAI");
  
 	} 
     catch (Exception e) { e.printStackTrace(); } 

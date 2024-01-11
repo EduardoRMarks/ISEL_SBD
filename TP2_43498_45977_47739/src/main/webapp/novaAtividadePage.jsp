@@ -36,7 +36,6 @@
 	
 	String idPt = (String) session.getAttribute("idPT");
 	String atividadeId = null;
-	//System.out.println("IDPT HAHHAA: " + idPt);
 
   	try {
         connection = DBConnectionManager.getConnection();
@@ -51,9 +50,6 @@
         	nifsClubes.add(nifClube);
         }
         
-        for (String s : nifsClubes)
-        	System.out.println(s);
-        
         query = "SELECT Id FROM sbd_tp1_43498_45977_47739.atividade";
         atividadeIds = PtUtil.getId(connection, query);
 
@@ -61,18 +57,13 @@
 
         // Get the highest value (last element after sorting) and increment it by 1
         int lastId = Integer.parseInt(atividadeIds.get(atividadeIds.size() - 1));
-        atividadeId = String.valueOf(lastId + 1);
-
-        System.out.println("ID ATIVIDADE: " + atividadeId);
-        
+        atividadeId = String.valueOf(lastId + 1);        
         
         for (String s : nifsClubes) {
         	String queryClubes = "SELECT * FROM sbd_tp1_43498_45977_47739.clube WHERE Nif = '" + s + "'";
         	nomesClubes.add(PtUtil.getDesignacaoComercial(connection, queryClubes));
         }
-        
-        for (String s : nomesClubes)
-            System.out.println(s);
+
 	} 
   	
   	catch (Exception e) { e.printStackTrace(); } 

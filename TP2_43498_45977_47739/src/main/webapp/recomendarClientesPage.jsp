@@ -45,9 +45,6 @@ Connection connection = null;
    	
    	String idPT = (String) session.getAttribute("idPT");
    	String nomePt = (String) session.getAttribute("nomePt");
-   	
-	System.out.println("IDPT: " + idPT);
-	System.out.println("nome pt: " + nomePt);
 
     try {
         connection = DBConnectionManager.getConnection();
@@ -89,9 +86,6 @@ Connection connection = null;
         Set<String> equipamentosWithoutDuplicates = new LinkedHashSet<>(equipamentosDisponiveisFinal);
         equipamentosDisponiveisFinal = new ArrayList<>(equipamentosWithoutDuplicates);
         
-        for(String s : equipamentosDisponiveisFinal) {
-        	System.out.println(s);
-        }
         
 	} catch (Exception e) {
         e.printStackTrace();

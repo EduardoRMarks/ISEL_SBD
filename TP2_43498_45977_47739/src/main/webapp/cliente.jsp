@@ -40,7 +40,6 @@
 	String idPt = null;
 	
 	String userEmail = (String) session.getAttribute("userEmail");
-	//String userEmail = "eduardo@aol.com";
 	
 	try {
         connection = DBConnectionManager.getConnection();

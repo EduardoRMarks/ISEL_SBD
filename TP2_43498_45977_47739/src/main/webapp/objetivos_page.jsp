@@ -42,7 +42,6 @@ int userNif = 0;
 
 user = (Cliente) session.getAttribute("user");
 userNif = user.getNIF();
-//userNif = 229495027;
 
 try {
     connection = DBConnectionManager.getConnection();

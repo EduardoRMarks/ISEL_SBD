@@ -26,7 +26,6 @@
 	ResultSet resultSet = null;
 	String nomePt = null;
 	
-	// Retrieve parameters from the request
 	String idPt = request.getParameter("idPt");
 	
 	Cliente user = (Cliente) session.getAttribute("user");
@@ -53,7 +52,6 @@
 
 	    resultSet = statement.executeQuery();
 	    while (resultSet.next()){
-	    	//System.out.println(resultSet.getString("Tipo"));
 	    	String idAtividade = resultSet.getString("Id");
 	    	
 	    	Date dataAtividade = resultSet.getDate("Data");

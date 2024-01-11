@@ -29,7 +29,6 @@
 	ResultSet resultSet = null;
 	boolean success = false;
 
-    // Retrieve parameters from the request
     String atividadeId = request.getParameter("atividadeId");
     String idPt = request.getParameter("idPt");
     String nomeAtividade = request.getParameter("nomeAtividade");
@@ -46,20 +45,13 @@
     String nomeClube = request.getParameter("nifClube");
     
     String nifClube = null;
-
-    boolean confirmacaoAtividade;
-    
-    System.out.println("DATA1 : " +data);
+	boolean confirmacaoAtividade;   
     
     if (data.equals("")) data = null;
     else if (diaDeSemana.equals("")) diaDeSemana = null;
     
-    System.out.println("DATA2 : " + data);
-    
     if (confirmacao.equals("1")) confirmacaoAtividade = true;
     else { confirmacaoAtividade = false; }
-    
-    System.out.println("DATA2 : " + data);
     
     try {
     	connection = DBConnectionManager.getConnection();
@@ -78,6 +70,7 @@
     			+ estado + "', '" + duracao + "', '" + diaDeSemana + "', '" + horaInicio + "', '" 
     	    	+ tipo + "', '" + data + "', '" + minParticipantes + "', '" + maxParticipantes + "', '"
     	    	+ confirmacao + "', '" + escalaoEtario + "', '" + nifClube + "');";
+    	    	
     	success = PtUtil.addAtividade(connection, atividadeId, idPt, nomeAtividade, estado, 
     			duracao, diaDeSemana, horaInicio, tipo, data, minParticipantes, maxParticipantes,
     			confirmacaoAtividade, escalaoEtario, nifClube);

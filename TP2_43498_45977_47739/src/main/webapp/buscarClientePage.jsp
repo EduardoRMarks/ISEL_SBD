@@ -145,9 +145,6 @@
 </div>
 
 <%
-    // ... your existing Java code
-    
-    // Handle setting the session attribute based on the parameters sent
     if ("true".equals(request.getParameter("saveToSession"))) {
         String clientName = request.getParameter("clientName");
         session.setAttribute("nomeCliente", clientName);

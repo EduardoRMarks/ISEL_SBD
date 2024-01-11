@@ -28,7 +28,6 @@
 	boolean success = false;
 	String patologia_objetivo = null;
 
-    // Retrieve parameters from the request
     String idAtividade = request.getParameter("idAtividade");
     String userNif = request.getParameter("userNif");
     String idPt = request.getParameter("idPt");

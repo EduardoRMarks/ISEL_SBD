@@ -46,7 +46,6 @@
 		<%
 	    
 	    while (resultSet.next()){
-	    	//System.out.println(resultSet.getString("Tipo"));
 	    	String idAtividade = resultSet.getString("Id");
 	    	String idPt = resultSet.getString("IdPt");
 	    	

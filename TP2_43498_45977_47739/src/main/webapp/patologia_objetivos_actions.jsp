@@ -28,7 +28,6 @@
 	boolean success = false;
 	String patologia_objetivo = null;
 
-    // Retrieve parameters from the request
     String which_table = request.getParameter("which_table");
     String action = request.getParameter("action");
     String nif = request.getParameter("nif");

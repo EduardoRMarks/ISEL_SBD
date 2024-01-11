@@ -201,9 +201,6 @@ public class PtUtil {
 			String nifClube, String data, boolean usoSQL) {
 		PreparedStatement statement = null;
 
-		System.out.println(
-				"ID: " + idPt + " " + nifCliente + " " + idEquipamento + " " + nifClube + " " + data + " " + usoSQL);
-
 		try {
 			String query = "INSERT INTO sbd_tp1_43498_45977_47739.pt_cliente_equipamento (`IdPt`, `NifCliente`, `IdEquipamento`, `NifClube`, `Data`, `Uso`)"
 					+ " VALUES (?, ?, ?, ?, ?, ?)"
@@ -244,8 +241,7 @@ public class PtUtil {
 					+ "`HoraDeInicio`, `Tipo`, `Data`, `MinParticipantes`, "
 					+ "`MaxParticipantes`, `Confirmacao`, `EscalaoEtario`, `NifClube`)"
 					+ " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-
-			System.out.println("\n QUERY HAHAHA: " + query);
+			
 			statement = connection.prepareStatement(query);
 			statement.setString(1, atividadeId);
 			statement.setString(2, idPt);
@@ -261,8 +257,6 @@ public class PtUtil {
 			statement.setBoolean(12, confirmacao);
 			statement.setString(13, escalaoEtario);
 			statement.setString(14, nifClube);
-
-			System.out.println("\n QUERY 2 HAHAHA: " + statement);
 
 			statement.executeUpdate();
 			return true;
@@ -281,8 +275,6 @@ public class PtUtil {
 	}
 
 	public static boolean confirmarOuCancelar(Connection connection, String action, String idAtividade) {
-
-		System.out.println("ACTION: " + action);
 
 		if (action.equals("confirmar")) {
 

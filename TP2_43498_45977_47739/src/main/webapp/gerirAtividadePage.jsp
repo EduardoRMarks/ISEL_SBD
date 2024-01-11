@@ -27,15 +27,11 @@
 	boolean success = false;
 	String confirmarCancelar = request.getParameter("action");
 	String idAtividade = request.getParameter("activityId");
-
-	System.out.println("XD: " + confirmarCancelar);
 	
     try {
     	connection = DBConnectionManager.getConnection();
     	
     	success = PtUtil.confirmarOuCancelar(connection, confirmarCancelar, idAtividade);
-    	
-    	System.out.println("SUCESS: " + success);
     	
         if(success){
         	if(confirmarCancelar.equals("confirmar")){

@@ -66,9 +66,6 @@ th {
    	String idPT = (String) session.getAttribute("idPT");
    	String nomePt = (String) session.getAttribute("nomePt");
    	
-	System.out.println("IDPT: " + idPT);
-	System.out.println("nome pt: " + nomePt);
-
     try {
         connection = DBConnectionManager.getConnection();
 
@@ -115,13 +112,7 @@ th {
             	listaAtividadesCanceladas.add(activityDetails);
             }
         }
-        
-        for (List<String> s : listaAtividadesPorConfirmar)
-        	System.out.println("Atividade por confirmar: " + s);
-        
-        for (List<String> s : listaAtividadesConfirmadas)
-        	System.out.println("Atividade confirmadas: " + s);
-        
+                
         nomesParametrosTabela.add("IdAtividade");
         nomesParametrosTabela.add("NomeAtividade");
         nomesParametrosTabela.add("Estado");
