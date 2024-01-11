@@ -60,8 +60,6 @@
 
     <button onclick="redirectToPage('manchasDeDisponibilidade.jsp')" style="display: block; margin-bottom: 10px;">Manchas de disponibilidade</button>
     
-    <button onclick="redirectToPage('agendarParticipacaoClientePage.jsp')" style="display: block; margin-bottom: 10px;">Agendar participação Cliente</button>
-    
     <button onclick="redirectToPage('buscarClientePage.jsp')" style="display: block; margin-bottom: 10px;">Procurar Cliente</button>
     
     <button onclick="redirectToPage('recomendarClientesPage.jsp')" style="display: block; margin-bottom: 10px;">Recomendar Clientes</button>
